@@ -21,9 +21,9 @@ def home(request):
 	quiz10=AddquizT.objects.all().filter(cgrade=10)
 	quiz11=AddquizT.objects.all().filter(cgrade=11)
 	quiz12=AddquizT.objects.all().filter(cgrade=12)
-	mt10=MockPM.objects.all().filter(mpgrade=10)
-	mt11=MockPM.objects.all().filter(mpgrade=11)
-	mt12=MockPM.objects.all().filter(mpgrade=12)
+	mt10=MockPM.objects.all().filter(mpgrade=10,visible=True)
+	mt11=MockPM.objects.all().filter(mpgrade=11,visible=True)
+	mt12=MockPM.objects.all().filter(mpgrade=12,visible=True)
 	mans=MockAnswer.objects.all().filter(sgrade=standard)
 	thoughts=Dialogues.objects.all()
 	for i in qans:

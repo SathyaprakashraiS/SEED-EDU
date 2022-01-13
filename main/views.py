@@ -372,3 +372,38 @@ def Atdelbooklist(request,adb,bid):
 		print(stat)
 		print(flag)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def Atexamlist(request,adb):
+	exams=MockPM.objects.all().filter(addedby=adb)
+	serializer = MockSerializer(exams,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Aexamlist(request):
+	serializer = MockSerializer(data=request.data)
+	if serializer.is_valid():
+		print("SUCCESS")
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		print("ERROR")
+		print("error",serializer.errors)
+		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Atdelexamlist(request,adb,bid):
+	print("here")
+	flag=MockPM.objects.all().filter(addedby=adb)
+	MockPM.objects.all().filter(addedby=adb,pk__exact=bid).update(visible=False)
+	exams=MockPM.objects.all().filter(addedby=adb,visible=True)
+	serializer = MockSerializer(exams,many=True)
+	if(flag):
+		stat="success"
+		print(stat)
+		print(flag)
+	else:
+		stat="fail"
+		print(stat)
+		print(flag)
+	return Response(serializer.data)
