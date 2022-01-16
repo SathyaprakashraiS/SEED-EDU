@@ -49,13 +49,5 @@ path("mockrresult-list/<str:mil>/",views.Amresultlist,name="mockresult-api"),
 path("sbook-list/<str:grd>/",views.Sbooklist,name="sbook-api"),
 path("qptypes-list/<str:grd>/",views.Squesbank,name="squesbank-api"),
 path("bpapers-list/<str:uid>/",views.Sbpapers,name="sbpapers-api"),
-path("revnotes-list/<str:grd>/",views.Srevnotes,name="srevnotes-api"),
-path("addbook-list/",views.Abooklist,name="addbooks-api"),
-path("tbook-list/<str:adb>/",views.Atbooklist,name="teacherviewbooks-api"),
-path("tdelbook-list/<str:adb>/<str:bid>/",views.Atdelbooklist,name="delTbooks-api"),
-path("texam-list/<str:adb>/",views.Atexamlist,name="dispexam-api"),
-path("addexam-list/",views.Aexamlist,name="addexam-api"),
-path("tdelexam-list/<str:adb>/<str:bid>/",views.Atdelexamlist,name="delexams-api"),
-path("tresbook-list/<str:adb>/",views.Aresbooklist,name="delbook-list-api"),
-path("trestorebook-list/<str:adb>/<str:bid>/",views.Arestorebooklist,name="resbook-api")
+path("revnotes-list/<str:grd>/",views.Srevnotes,name="srevnotes-api")
 ]

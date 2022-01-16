@@ -41,8 +41,6 @@ class MockPM(models.Model):
     mpgrade=models.IntegerField(default=10,validators=[MaxValueValidator(12), MinValueValidator(10)])
     mockpaper=models.FileField(upload_to='images')
     totalmarks=models.IntegerField(default=0)
-    visible=models.BooleanField(default=True)
-    addedby=models.CharField(max_length=500,default="admin")
 
 class Assesedanswer(models.Model):
 	key=models.CharField(max_length=10,default="id")

@@ -140,19 +140,14 @@
 <div class="thenavcont">
 
 
-<!-- <div id="bmain">
-  <div class="dive" ><button id="prev_page">Previos Page</button></div>
-  <div class="divp" >
 
-</div>
-  <div class="dive" ><button id="next_page">next Page</button></div>
-
-</div> -->
 
 <main class="page-content">
 {% for i in book %}
 <h1 style="text-align:center;"><b>{{i.title}}</b></h1>
-<div class="container">
+
+<iframe src="{{i.file.url}}" width="500px" height="500px"></iframe>
+<!-- <div class="container">
 <canvas style="width:90%;height:20%;align-items: center;" id="pdf_canvas"></canvas>
 <div class="pdfbuttons">
         <button id="prev_page">Previos Page</button>
@@ -163,7 +158,7 @@
 
         <input type="text" id="page_num">
         <button id="go_to_page">Go To Page</button>
-</div>
+</div> -->
 </div>
 
 <script>
@@ -187,8 +182,9 @@ window.addEventListener('load', function () {
 
 function initPDFRenderer() {
     let url = "{{i.file.url}}";
+    console.log(url)
     // const url = 'filepath.pdf'; // to load pdf from our machine
-    let option  = { url};
+    let option  = {url};
     
     pdfjsLib.getDocument(option)
             .promise
