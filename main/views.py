@@ -352,14 +352,14 @@ def Abooklist(request):
 
 @api_view(['GET'])
 def Atbooklist(request,adb):
-	books=Books.objects.all().filter(addedby=adb)
+	books=Books.objects.all().filter(addedby=adb,visible=True)
 	serializer = BookSerializer(books,many=True)
 	return Response(serializer.data)
 
 @api_view(['GET'])
 def Atdelbooklist(request,adb,bid):
 	print("here")
-	flag=Books.objects.all().filter(addedby=adb,pk__exact=int(bid))
+	flag=Books.objects.all().filter(addedby=adb,pk__exact=int(bid),visible=True)
 	Books.objects.all().filter(addedby=adb,pk__exact=bid).update(visible=False)
 	books=Books.objects.all().filter(addedby=adb,visible=True)
 	serializer = BookSerializer(books,many=True)
@@ -375,7 +375,7 @@ def Atdelbooklist(request,adb,bid):
 
 @api_view(['GET'])
 def Atexamlist(request,adb):
-	exams=MockPM.objects.all().filter(addedby=adb)
+	exams=MockPM.objects.all().filter(addedby=adb,visible=True)
 	serializer = MockSerializer(exams,many=True)
 	return Response(serializer.data)
 
@@ -394,10 +394,33 @@ def Aexamlist(request):
 @api_view(['GET'])
 def Atdelexamlist(request,adb,bid):
 	print("here")
-	flag=MockPM.objects.all().filter(addedby=adb)
+	flag=MockPM.objects.all().filter(addedby=adb,,visible=True)
 	MockPM.objects.all().filter(addedby=adb,pk__exact=bid).update(visible=False)
 	exams=MockPM.objects.all().filter(addedby=adb,visible=True)
 	serializer = MockSerializer(exams,many=True)
+	if(flag):
+		stat="success"
+		print(stat)
+		print(flag)
+	else:
+		stat="fail"
+		print(stat)
+		print(flag)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Aresbooklist(request,adb):
+	books=Books.objects.all().filter(addedby=adb,visible=False)
+	serializer = BookSerializer(books,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Arestorebooklist(request,adb,bid):
+	print("here")
+	flag=Books.objects.all().filter(addedby=adb,pk__exact=int(bid),visible=False)
+	Books.objects.all().filter(addedby=adb,pk__exact=bid).update(visible=True)
+	books=Books.objects.all().filter(addedby=adb,visible=True)
+	serializer = BookSerializer(books,many=True)
 	if(flag):
 		stat="success"
 		print(stat)

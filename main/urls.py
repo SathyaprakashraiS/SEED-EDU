@@ -55,5 +55,7 @@ path("tbook-list/<str:adb>/",views.Atbooklist,name="teacherviewbooks-api"),
 path("tdelbook-list/<str:adb>/<str:bid>/",views.Atdelbooklist,name="delTbooks-api"),
 path("texam-list/<str:adb>/",views.Atexamlist,name="dispexam-api"),
 path("addexam-list/",views.Aexamlist,name="addexam-api"),
-path("tdelexam-list/<str:adb>/<str:bid>/",views.Atdelexamlist,name="delexams-api")
+path("tdelexam-list/<str:adb>/<str:bid>/",views.Atdelexamlist,name="delexams-api"),
+path("tresbook-list/<str:adb>/",views.Aresbooklist,name="delbook-list-api"),
+path("trestorebook-list/<str:adb>/<str:bid>/",views.Arestorebooklist,name="resbook-api")
 ]
