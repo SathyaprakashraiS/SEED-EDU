@@ -59,7 +59,7 @@ def edit(request):
 #API
 @api_view(['GET'])
 def Abooklist(request):
-	books = Books.objects.all().order_by('-id')
+	books = Books.objects.all().filter(visible=True).order_by('-id')
 	serializer = BookSerializer(books, many=True)
 	return Response(serializer.data)
 
@@ -197,7 +197,7 @@ def Avideolist(request):
 
 @api_view(['GET'])
 def Abookstandardlist(request,key):
-	booklist=Books.objects.all()
+	booklist=Books.objects.all().filter(visible=True)
 	for i in booklist:
 		if(str(i.bgrade) != str(key)):
 			booklist=booklist.exclude(pk=i.id)
@@ -316,7 +316,7 @@ def Amresultlist(request,mil):
 
 @api_view(['GET'])
 def Sbooklist(request,grd):
-	sbl=Books.objects.all().filter(bgrade__forgrade=grd)
+	sbl=Books.objects.all().filter(bgrade__forgrade=grd,visible=True)
 	serializer = BookSerializer(sbl,many=True)
 	return Response(serializer.data)
 
@@ -336,4 +336,97 @@ def Sbpapers(request,uid):
 def Srevnotes(request,grd):
 	notes=Notes.objects.all().filter(grade=grd)
 	serializer = NotesSerializer(notes,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Abooklist(request):
+	serializer = BookSerializer(data=request.data)
+	if serializer.is_valid():
+		print("SUCCESS")
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		print("ERROR")
+		print("error",serializer.errors)
+		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Atbooklist(request,adb):
+	books=Books.objects.all().filter(addedby=adb,visible=True)
+	serializer = BookSerializer(books,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Atdelbooklist(request,adb,bid):
+	print("here")
+	flag=Books.objects.all().filter(addedby=adb,pk__exact=int(bid),visible=True)
+	Books.objects.all().filter(addedby=adb,pk__exact=bid).update(visible=False)
+	books=Books.objects.all().filter(addedby=adb,visible=True)
+	serializer = BookSerializer(books,many=True)
+	if(flag):
+		stat="success"
+		print(stat)
+		print(flag)
+	else:
+		stat="fail"
+		print(stat)
+		print(flag)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Atexamlist(request,adb):
+	exams=MockPM.objects.all().filter(addedby=adb,visible=True)
+	serializer = MockSerializer(exams,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Aexamlist(request):
+	serializer = MockSerializer(data=request.data)
+	if serializer.is_valid():
+		print("SUCCESS")
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		print("ERROR")
+		print("error",serializer.errors)
+		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Atdelexamlist(request,adb,bid):
+	print("here")
+	flag=MockPM.objects.all().filter(addedby=adb,visible=True)
+	MockPM.objects.all().filter(addedby=adb,pk__exact=bid).update(visible=False)
+	exams=MockPM.objects.all().filter(addedby=adb,visible=True)
+	serializer = MockSerializer(exams,many=True)
+	if(flag):
+		stat="success"
+		print(stat)
+		print(flag)
+	else:
+		stat="fail"
+		print(stat)
+		print(flag)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Aresbooklist(request,adb):
+	books=Books.objects.all().filter(addedby=adb,visible=False)
+	serializer = BookSerializer(books,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Arestorebooklist(request,adb,bid):
+	print("here")
+	flag=Books.objects.all().filter(addedby=adb,pk__exact=int(bid),visible=False)
+	Books.objects.all().filter(addedby=adb,pk__exact=bid).update(visible=True)
+	books=Books.objects.all().filter(addedby=adb,visible=True)
+	serializer = BookSerializer(books,many=True)
+	if(flag):
+		stat="success"
+		print(stat)
+		print(flag)
+	else:
+		stat="fail"
+		print(stat)
+		print(flag)
 	return Response(serializer.data)

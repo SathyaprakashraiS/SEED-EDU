@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 from .models import *
-
+from .forms import *
 # Create your views here.
 def books(request):
 	obj=Books.objects.all()
