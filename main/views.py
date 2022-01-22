@@ -416,17 +416,36 @@ def Aresbooklist(request,adb):
 
 @api_view(['GET'])
 def Arestorebooklist(request,adb,bid):
-	print("here")
 	flag=Books.objects.all().filter(addedby=adb,pk__exact=int(bid),visible=False)
 	Books.objects.all().filter(addedby=adb,pk__exact=bid).update(visible=True)
 	books=Books.objects.all().filter(addedby=adb,visible=True)
 	serializer = BookSerializer(books,many=True)
 	if(flag):
 		stat="success"
-		print(stat)
-		print(flag)
 	else:
 		stat="fail"
-		print(stat)
-		print(flag)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Aqpmlist(request):
+	qpapers=QPM.objects.all()
+	serializer = QPbankSerializer(qpapers,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Apaperlist(request):
+	serializer = QpapersSerializer(data=request.data)
+	if serializer.is_valid():
+		print("SUCCESS")
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		print("ERROR")
+		print("error",serializer.errors)
+		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Aauthorpaperlist(request,mil):
+	papers=Paper.objects.all().filter(visible=True,addedby=mil)
+	serializer = QpapersSerializer(papers,many=True)
 	return Response(serializer.data)

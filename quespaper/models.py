@@ -18,7 +18,8 @@ class Paper(models.Model):
     key=models.CharField(max_length=200,default='VieW')
     year=models.CharField(max_length=200,default='UnknowN')
     paper=models.FileField(upload_to='images',default='images/none.pdf')
-
+    addedby=models.CharField(max_length=1000,default="ADMIN")
+    visible=models.BooleanField(default=True)
     def __str__(self):
         return self.name
 
