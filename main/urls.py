@@ -63,5 +63,7 @@ path("tqptypes-list/",views.Aqpmlist,name="quespapertypes-api"),
 path("addpaper-list/",views.Apaperlist,name="addqpaper-api"),
 path("delpaper-list/<str:adb>/<str:bid>/",views.Adeletepaperlist,name="delqpaper-api"),
 path("Authpaper-list/<str:mil>/",views.Aauthorpaperlist,name="delpaperlist-api"),
-path("Tdeletedexam-list/<str:mil>/",views.Adeletedexam,name="deletedpaperlist-api")
+path("Tdeletedexam-list/<str:mil>/",views.Adeletedexam,name="deletedpaperlist-api"),
+path("respaper-list/<str:mil>/",views.Arespaper,name="restorepaperlist-api"),
+path("recoverpaper-list/<str:mil>/<str:bid>/",views.Arestorepaper,name="recoverpaperlist-api")
 ]

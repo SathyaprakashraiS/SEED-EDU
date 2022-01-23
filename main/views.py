@@ -479,3 +479,16 @@ def Adeletepaperlist(request,adb,bid):
 	delpaper=Paper.objects.all().filter(addedby=adb,visible=True)
 	serializer = QpapersSerializer(delpaper,many=True)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def Arespaper(request,mil):
+	respaper=Paper.objects.all().filter(addedby=mil,visible=False)
+	serializer = QpapersSerializer(respaper,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Arestorepaper(request,mil,bid):
+	Paper.objects.all().filter(addedby=mil,visible=False,pk__exact=bid).update(visible=True)
+	respaper=Paper.objects.all().filter(addedby=mil,visible=False)
+	serializer = QpapersSerializer(respaper,many=True)
+	return Response(serializer.data)
