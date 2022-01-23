@@ -409,6 +409,23 @@ def Atdelexamlist(request,adb,bid):
 	return Response(serializer.data)
 
 @api_view(['GET'])
+def Atresexamlist(request,adb,bid):
+	print("here")
+	flag=MockPM.objects.all().filter(addedby=adb,visible=False)
+	MockPM.objects.all().filter(addedby=adb,pk__exact=bid).update(visible=True)
+	exams=MockPM.objects.all().filter(addedby=adb,visible=True)
+	serializer = MockSerializer(exams,many=True)
+	if(flag):
+		stat="success"
+		print(stat)
+		print(flag)
+	else:
+		stat="fail"
+		print(stat)
+		print(flag)
+	return Response(serializer.data)
+
+@api_view(['GET'])
 def Aresbooklist(request,adb):
 	books=Books.objects.all().filter(addedby=adb,visible=False)
 	serializer = BookSerializer(books,many=True)
@@ -448,4 +465,17 @@ def Apaperlist(request):
 def Aauthorpaperlist(request,mil):
 	papers=Paper.objects.all().filter(visible=True,addedby=mil)
 	serializer = QpapersSerializer(papers,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Adeletedexam(request,mil):
+	delexams=MockPM.objects.all().filter(addedby=mil,visible=False)
+	serializer = MockSerializer(delexams,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Adeletepaperlist(request,adb,bid):
+	flag=Paper.objects.all().filter(addedby=adb,visible=True,pk__exact=bid).update(visible=False)
+	delpaper=Paper.objects.all().filter(addedby=adb,visible=True)
+	serializer = QpapersSerializer(delpaper,many=True)
 	return Response(serializer.data)
