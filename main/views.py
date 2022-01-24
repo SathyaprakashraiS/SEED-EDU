@@ -492,3 +492,47 @@ def Arestorepaper(request,mil,bid):
 	respaper=Paper.objects.all().filter(addedby=mil,visible=False)
 	serializer = QpapersSerializer(respaper,many=True)
 	return Response(serializer.data)
+
+@api_view(['POST'])
+def Aaddquiz(request):
+	serializer = QuizSerializer(data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		return Response(serializer.errors)
+
+@api_view(['POST'])
+def Aaddquizquestion(request):
+	serializer = QuizansSerializer(data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Aquizlist(request,mil):
+	quizes=AddquizT.objects.all().filter(author=mil,visible=True)
+	serializer = QuizSerializer(quizes,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Adelquizlist(request,mil,bid):
+	AddquizT.objects.all().filter(author=mil,visible=True,pk__exact=bid).update(visible=False)
+	quizes=AddquizT.objects.all().filter(author=mil,visible=True)
+	serializer = QuizSerializer(quizes,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Arestorequizlist(request,mil):
+	resquiz=AddquizT.objects.all().filter(author=mil,visible=False)
+	serializer = QuizSerializer(resquiz,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Arecoverquiz(request,mil,bid):
+	AddquizT.objects.all().filter(author=mil,visible=False,pk__exact=bid).update(visible=True)
+	resquiz=AddquizT.objects.all().filter(author=mil,visible=True)
+	serializer = QuizSerializer(resquiz,many=True)
+	return Response(serializer.data)

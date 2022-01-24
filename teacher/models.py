@@ -9,6 +9,7 @@ class AddquizT(models.Model):
 	cname=models.CharField(max_length=200,default='quiz_name')
 	author=models.CharField(max_length=200,default='teacher_name')
 	cgrade=models.IntegerField(default=10)
+	visible=models.BooleanField(default=True)
 
 	def __str__(self):
 		return self.cname
