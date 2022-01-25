@@ -68,8 +68,11 @@ path("respaper-list/<str:mil>/",views.Arespaper,name="restorepaperlist-api"),
 path("recoverpaper-list/<str:mil>/<str:bid>/",views.Arestorepaper,name="recoverpaperlist-api"),
 path("Taddquiz-list/",views.Aaddquiz,name="addquiz-api"),
 path("Taddquizquestion-list/",views.Aaddquizquestion,name="addquizquestion-api"),
-path("Tquiz-list/<str:mil>/",views.Aquizlist,name="quizlist-api"),
+path("Tquiz-list/<str:mil>/",views.ATquizlist,name="quizlist-api"),
 path("Tdelquiz-list/<str:mil>/<str:bid>/",views.Adelquizlist,name="delquizlist-api"),
 path("Trestorequiz-list/<str:mil>/",views.Arestorequizlist,name="restorequizlist-api"),
-path("Trestorequiz-list/<str:mil>/<str:bid>/",views.Arecoverquiz,name="restorequizlist-api")
+path("Trestorequiz-list/<str:mil>/<str:bid>/",views.Arecoverquiz,name="restorequizlist-api"),
+path("Taddquizques-list/<str:mil>/<str:bid>/",views.Aaddquizques,name="addquizqueslist-api"),
+path("Tquizques-list/<str:mil>/<str:bid>/",views.Aquizques,name="quizquestionlist-api"),
+path("Tdelquizques-list/<str:mil>/<str:qid>/<str:wid>/",views.Adelquizques,name="quizquestionlist-api")
 ]

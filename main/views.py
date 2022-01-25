@@ -512,7 +512,7 @@ def Aaddquizquestion(request):
 		return Response(serializer.errors)
 
 @api_view(['GET'])
-def Aquizlist(request,mil):
+def ATquizlist(request,mil):
 	quizes=AddquizT.objects.all().filter(author=mil,visible=True)
 	serializer = QuizSerializer(quizes,many=True)
 	return Response(serializer.data)
@@ -536,3 +536,37 @@ def Arecoverquiz(request,mil,bid):
 	resquiz=AddquizT.objects.all().filter(author=mil,visible=True)
 	serializer = QuizSerializer(resquiz,many=True)
 	return Response(serializer.data)
+
+@api_view(['POST'])
+def Aaddquizques(request,mil,bid):
+	serializer = QuizansSerializer(data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		quizques=AddquestionT.objects.all().filter(testgrade=bid)
+		serializer = QuizansSerializer(quizques,many=True)
+		return Response(serializer.data)
+	else:
+		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Aquizques(request,mil,bid):
+	flag=AddquizT.objects.all().filter(pk__exact=bid,visible=True)
+	if flag:
+		resquiz=AddquestionT.objects.all().filter(testgrade=bid)
+		serializer = QuizansSerializer(resquiz,many=True)
+		return Response(serializer.data)
+	else:
+		terror="ERROR"
+		return Response(terror)
+
+@api_view(['GET'])
+def Adelquizques(request,mil,qid,wid):
+	flag=AddquizT.objects.all().filter(pk__exact=qid,visible=True,author=mil)
+	if flag:
+		AddquestionT.objects.all().filter(testgrade=qid,pk__exact=wid).delete()
+		resquiz=AddquestionT.objects.all().filter(testgrade=qid)
+		serializer = QuizansSerializer(resquiz,many=True)
+		return Response(serializer.data)
+	else:
+		terror="ERROR"
+		return Response(terror)
