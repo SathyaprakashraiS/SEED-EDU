@@ -74,5 +74,10 @@ path("Trestorequiz-list/<str:mil>/",views.Arestorequizlist,name="restorequizlist
 path("Trestorequiz-list/<str:mil>/<str:bid>/",views.Arecoverquiz,name="restorequizlist-api"),
 path("Taddquizques-list/<str:mil>/<str:bid>/",views.Aaddquizques,name="addquizqueslist-api"),
 path("Tquizques-list/<str:mil>/<str:bid>/",views.Aquizques,name="quizquestionlist-api"),
-path("Tdelquizques-list/<str:mil>/<str:qid>/<str:wid>/",views.Adelquizques,name="quizquestionlist-api")
+path("Tdelquizques-list/<str:mil>/<str:qid>/<str:wid>/",views.Adelquizques,name="quizquestionlist-api"),
+path("Taddocourse-list/<str:mil>/",views.Taddocourse,name="addcourselist-api"),
+path("Tocourse-list/<str:mil>/",views.Tocourse,name="ocourseslist-api"),
+path("Tdelocourse-list/<str:mil>/<str:cid>/",views.Tdelocourse,name="deleteaocourseslist-api"),
+path("Tresocourse-list/<str:mil>/<str:cid>/",views.Tresocourse,name="restoreocourseslist-api"),
+path("Tdeletedocourses-list/<str:mil>/",views.Tdellistocourse,name="deletedocourseslist-api")
 ]

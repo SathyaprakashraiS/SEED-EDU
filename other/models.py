@@ -8,6 +8,8 @@ class Onlinecourses(models.Model):
 	price=models.CharField(max_length=100)
 	image=models.ImageField(upload_to='images',default='images/tst2.jpg')
 	link=models.CharField(max_length=1000)
+	addedby=models.CharField(max_length=1000,default="ADMIN")
+	visible=models.BooleanField(default=True)
 
 class Videos(models.Model):
 	name=models.CharField(max_length=300)

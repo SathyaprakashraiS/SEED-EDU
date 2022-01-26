@@ -37,8 +37,8 @@ def asses(request):
 	epapers=Assesedanswer.objects.all()
 	for i in epapers:
 		for j in papers:
-			if str(i.testname)==str(j.testname):
-				papers=papers.exclude(testname=i.testname)
+			if((str(i.testname)==str(j.testname)) and (str(i.semail)==str(j.semail))):
+				papers=papers.exclude(testname=i.testname,semail=i.semail)
 	context={
 		'papers':papers,'epapers':epapers
 	}

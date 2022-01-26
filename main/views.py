@@ -185,7 +185,7 @@ def Atipslist(request):
 
 @api_view(['GET'])
 def Aocourseslist(request):
-	ocourselist=Onlinecourses.objects.all()
+	ocourselist=Onlinecourses.objects.all().filter(visible=True)
 	serializer = OnlinecoursesSerializer(ocourselist, many=True)
 	return Response(serializer.data)
 
@@ -570,3 +570,40 @@ def Adelquizques(request,mil,qid,wid):
 	else:
 		terror="ERROR"
 		return Response(terror)
+
+@api_view(['POST'])
+def Taddocourse(request,mil):
+	serializer = OnlinecoursesSerializer(data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		ocourses=Onlinecourses.objects.all().filter(visible=True,addedby=mil)
+		serializer = OnlinecoursesSerializer(ocourses,many=True)
+		return Response(serializer.data)
+	else:
+		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Tocourse(request,mil):
+	ocourse=Onlinecourses.objects.all().filter(addedby=mil,visible=True)
+	serializer = OnlinecoursesSerializer(ocourse,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Tdelocourse(request,mil,cid):
+	Onlinecourses.objects.all().filter(addedby=mil,visible=True,pk__exact=cid).update(visible=False)
+	ocourse=Onlinecourses.objects.all().filter(addedby=mil,visible=True)
+	serializer = OnlinecoursesSerializer(ocourse,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Tresocourse(request,mil,cid):
+	Onlinecourses.objects.all().filter(addedby=mil,visible=False,pk__exact=cid).update(visible=True)
+	delocourse=Onlinecourses.objects.all().filter(addedby=mil,visible=False)
+	serializer = OnlinecoursesSerializer(delocourse,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Tdellistocourse(request,mil):
+	deletedocourse=Onlinecourses.objects.all().filter(addedby=mil,visible=False)
+	serializer = OnlinecoursesSerializer(deletedocourse,many=True)
+	return Response(serializer.data)
