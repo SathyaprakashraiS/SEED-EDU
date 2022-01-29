@@ -619,3 +619,19 @@ def Ttoasspapers(request,std):
 	papers=MockAnswer.objects.all().filter(sgrade=std,evaluated=False)
 	serializer = AttMockSerializer(papers,many=True)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def Tthatpaper(request,pid):
+	paper=MockAnswer.objects.all().filter(pk__exact=pid)
+	serializer = AttMockSerializer(paper,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Tsubmitpaper(request,pid):
+	mpaper=MockAnswer.objects.get(pk__exact=pid)
+	serializer = AttMockSerializer(instance=mpaper,data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		return Response(serializer.errors)
