@@ -79,5 +79,7 @@ path("Taddocourse-list/<str:mil>/",views.Taddocourse,name="addcourselist-api"),
 path("Tocourse-list/<str:mil>/",views.Tocourse,name="ocourseslist-api"),
 path("Tdelocourse-list/<str:mil>/<str:cid>/",views.Tdelocourse,name="deleteaocourseslist-api"),
 path("Tresocourse-list/<str:mil>/<str:cid>/",views.Tresocourse,name="restoreocourseslist-api"),
-path("Tdeletedocourses-list/<str:mil>/",views.Tdellistocourse,name="deletedocourseslist-api")
+path("Tdeletedocourses-list/<str:mil>/",views.Tdellistocourse,name="deletedocourseslist-api"),
+path("TEvalpapers-list/<str:mil>/<str:std>/",views.Tevalpapers,name="evaluatedpaperlist-api"),
+path("Ttoasspapers-list/<str:std>/",views.Ttoasspapers,name="notevaluatedpaperlist-api")
 ]

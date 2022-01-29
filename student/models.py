@@ -20,4 +20,5 @@ class MockAnswer(models.Model):
 	answersheet=models.FileField(upload_to='images',default='static/images/default.pdf')
 	correctedanswersheet=models.FileField(upload_to='images',default='static/images/default.pdf')
 	evaluated=models.BooleanField(default=False)
+	evaluatedby=models.CharField(default="ADMIN",max_length=1000)
 	tempo=models.IntegerField(default=1)

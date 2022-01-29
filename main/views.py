@@ -607,3 +607,15 @@ def Tdellistocourse(request,mil):
 	deletedocourse=Onlinecourses.objects.all().filter(addedby=mil,visible=False)
 	serializer = OnlinecoursesSerializer(deletedocourse,many=True)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def Tevalpapers(request,mil,std):
+	epapers=MockAnswer.objects.all().filter(evaluatedby=mil,evaluated=True,sgrade=std)
+	serializer = AttMockSerializer(epapers,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Ttoasspapers(request,std):
+	papers=MockAnswer.objects.all().filter(sgrade=std,evaluated=False)
+	serializer = AttMockSerializer(papers,many=True)
+	return Response(serializer.data)
