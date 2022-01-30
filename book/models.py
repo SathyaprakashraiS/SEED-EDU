@@ -10,10 +10,10 @@ class BookTypes(models.Model):
 class Books(models.Model):
     bgrade=models.ForeignKey(BookTypes,on_delete=models.CASCADE)
     #bgrade=models.IntegerField(default=10)
-    name=models.CharField(max_length=200)
+    name=models.CharField(max_length=200,default='book name')
     subject=models.CharField(max_length=200,default="10science,11maths,12english,Main,Neet...")
-    details=models.CharField(max_length=200)
-    review=models.CharField(max_length=200)
+    details=models.CharField(max_length=200,default='details unavailable')
+    review=models.CharField(max_length=200,default='book review')
     rating=models.FloatField(default=0)
     image=models.ImageField(default="images/tst2.jpg")
     author=models.CharField(max_length=200,default="NCERT")

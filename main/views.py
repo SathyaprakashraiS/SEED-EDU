@@ -635,3 +635,19 @@ def Tsubmitpaper(request,pid):
 		return Response(serializer.data)
 	else:
 		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Tupdbookdata(request,pid):
+	updbook=Books.objects.all().filter(pk__exact=pid)
+	serializer = BookSerializer(updbook,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Tpostbookdata(request,pid):
+	book=Books.objects.get(pk__exact=pid)
+	serializer = BookSerializer(instance=book,data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		return Response(serializer.errors)

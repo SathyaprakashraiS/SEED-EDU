@@ -83,5 +83,7 @@ path("Tdeletedocourses-list/<str:mil>/",views.Tdellistocourse,name="deletedocour
 path("TEvalpapers-list/<str:mil>/<str:std>/",views.Tevalpapers,name="evaluatedpaperlist-api"),
 path("Ttoasspapers-list/<str:std>/",views.Ttoasspapers,name="notevaluatedpaperlist-api"),
 path("Tthatpaper/<str:pid>/",views.Tthatpaper,name="studexampaper-api"),
-path("Tcorrectedsubmitpaper/<str:pid>/",views.Tsubmitpaper,name="poststudexampaper-api")
+path("Tcorrectedsubmitpaper/<str:pid>/",views.Tsubmitpaper,name="poststudexampaper-api"),
+path("Tupdatebookdata/<str:pid>/",views.Tupdbookdata,name="bookupdatedata-api"),
+path("Tpostupdatedbookdata/<str:pid>/",views.Tpostbookdata,name="postupdatedbookdata-api")
 ]
