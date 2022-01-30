@@ -651,3 +651,20 @@ def Tpostbookdata(request,pid):
 		return Response(serializer.data)
 	else:
 		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Tupdexamdata(request,pid):
+	updexam=MockPM.objects.all().filter(pk__exact=pid)
+	serializer = MockSerializer(updexam,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Tpostexamdata(request,pid):
+	exam=MockPM.objects.get(pk__exact=pid)
+	serializer = MockSerializer(instance=exam,data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		print(serializer.errors)
+		return Response(serializer.errors)

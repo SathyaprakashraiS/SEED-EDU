@@ -37,10 +37,10 @@ class QuizAnswer(models.Model):
 	totalmarks=models.CharField(max_length=500,default='0')
 
 class MockPM(models.Model):
-    mockpapername= models.CharField(max_length=200)
+    mockpapername= models.CharField(max_length=200,default="paper name")
     paperdescription= models.CharField(max_length=100,default="The description")
     mpgrade=models.IntegerField(default=10,validators=[MaxValueValidator(12), MinValueValidator(10)])
-    mockpaper=models.FileField(upload_to='images')
+    mockpaper=models.FileField(upload_to='images',default='static/images/default.pdf')
     totalmarks=models.IntegerField(default=0)
     visible=models.BooleanField(default=True)
     addedby=models.CharField(max_length=500,default="admin")
