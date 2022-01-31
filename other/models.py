@@ -2,12 +2,12 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 # Create your models here.
 class Onlinecourses(models.Model):
-	name=models.CharField(max_length=150)
-	description=models.CharField(max_length=1500)
+	name=models.CharField(max_length=150,default="course_name")
+	description=models.CharField(max_length=1500,default="course_description")
 	rating=models.FloatField(default=5,validators=[MaxValueValidator(5), MinValueValidator(0)])
-	price=models.CharField(max_length=100)
+	price=models.CharField(max_length=100,default="FREE")
 	image=models.ImageField(upload_to='images',default='images/tst2.jpg')
-	link=models.CharField(max_length=1000)
+	link=models.CharField(max_length=1000,default="/")
 	addedby=models.CharField(max_length=1000,default="ADMIN")
 	visible=models.BooleanField(default=True)
 

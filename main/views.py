@@ -719,3 +719,20 @@ def Tpostquizquesdata(request,pid):
 	else:
 		print(serializer.errors)
 		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Tupdocoursedata(request,pid):
+	updocourse=Onlinecourses.objects.all().filter(pk__exact=pid)
+	serializer = OnlinecoursesSerializer(updocourse,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Tpostocoursedata(request,pid):
+	ocourse=Onlinecourses.objects.get(pk__exact=pid)
+	serializer = OnlinecoursesSerializer(instance=ocourse,data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		print(serializer.errors)
+		return Response(serializer.errors)

@@ -93,5 +93,7 @@ path("Tpostupdatedqpaperdata/<str:pid>/",views.Tpostqpaperdata,name="postupdated
 path("Tupdatequizdata/<str:pid>/",views.Tupdquizdata,name="quizupdatedata-api"),
 path("Tpostupdatedquizdata/<str:pid>/",views.Tpostquizdata,name="postupdatedquizdata-api"),
 path("Tupdatequizquesdata/<str:pid>/",views.Tupdquizquesdata,name="quizquesupdatedata-api"),
-path("Tpostupdatedquizquesdata/<str:pid>/",views.Tpostquizquesdata,name="postupdatedquizquesdata-api")
+path("Tpostupdatedquizquesdata/<str:pid>/",views.Tpostquizquesdata,name="postupdatedquizquesdata-api"),
+path("Tupdateocoursedata/<str:pid>/",views.Tupdocoursedata,name="ocourseupdatedata-api"),
+path("Tpostupdatedocoursedata/<str:pid>/",views.Tpostocoursedata,name="postupdatedocoursedata-api")
 ]
