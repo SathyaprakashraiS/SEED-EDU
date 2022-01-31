@@ -89,5 +89,9 @@ path("Tpostupdatedbookdata/<str:pid>/",views.Tpostbookdata,name="postupdatedbook
 path("Tupdateexamdata/<str:pid>/",views.Tupdexamdata,name="examupdatedata-api"),
 path("Tpostupdatedexamdata/<str:pid>/",views.Tpostexamdata,name="postupdatedexamdata-api"),
 path("Tupdateqpaperdata/<str:pid>/",views.Tupdqpaperdata,name="qpaperupdatedata-api"),
-path("Tpostupdatedqpaperdata/<str:pid>/",views.Tpostqpaperdata,name="postupdatedqpaperdata-api")
+path("Tpostupdatedqpaperdata/<str:pid>/",views.Tpostqpaperdata,name="postupdatedqpaperdata-api"),
+path("Tupdatequizdata/<str:pid>/",views.Tupdquizdata,name="quizupdatedata-api"),
+path("Tpostupdatedquizdata/<str:pid>/",views.Tpostquizdata,name="postupdatedquizdata-api"),
+path("Tupdatequizquesdata/<str:pid>/",views.Tupdquizquesdata,name="quizquesupdatedata-api"),
+path("Tpostupdatedquizquesdata/<str:pid>/",views.Tpostquizquesdata,name="postupdatedquizquesdata-api")
 ]

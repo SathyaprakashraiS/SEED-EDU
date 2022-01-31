@@ -685,3 +685,37 @@ def Tpostqpaperdata(request,pid):
 	else:
 		print(serializer.errors)
 		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Tupdquizdata(request,pid):
+	updquiz=AddquizT.objects.all().filter(pk__exact=pid)
+	serializer = QuizSerializer(updquiz,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Tpostquizdata(request,pid):
+	quiz=AddquizT.objects.get(pk__exact=pid)
+	serializer = QuizSerializer(instance=quiz,data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		print(serializer.errors)
+		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Tupdquizquesdata(request,pid):
+	updquizques=AddquestionT.objects.all().filter(pk__exact=pid)
+	serializer = QuizansSerializer(updquizques,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Tpostquizquesdata(request,pid):
+	quizques=AddquestionT.objects.get(pk__exact=pid)
+	serializer = QuizansSerializer(instance=quizques,data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		print(serializer.errors)
+		return Response(serializer.errors)
