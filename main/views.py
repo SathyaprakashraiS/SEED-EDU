@@ -668,3 +668,20 @@ def Tpostexamdata(request,pid):
 	else:
 		print(serializer.errors)
 		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Tupdqpaperdata(request,pid):
+	updqpaper=Paper.objects.all().filter(pk__exact=pid)
+	serializer = QpapersSerializer(updqpaper,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Tpostqpaperdata(request,pid):
+	qpaper=Paper.objects.get(pk__exact=pid)
+	serializer = QpapersSerializer(instance=qpaper,data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		print(serializer.errors)
+		return Response(serializer.errors)

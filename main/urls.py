@@ -87,5 +87,7 @@ path("Tcorrectedsubmitpaper/<str:pid>/",views.Tsubmitpaper,name="poststudexampap
 path("Tupdatebookdata/<str:pid>/",views.Tupdbookdata,name="bookupdatedata-api"),
 path("Tpostupdatedbookdata/<str:pid>/",views.Tpostbookdata,name="postupdatedbookdata-api"),
 path("Tupdateexamdata/<str:pid>/",views.Tupdexamdata,name="examupdatedata-api"),
-path("Tpostupdatedexamdata/<str:pid>/",views.Tpostexamdata,name="postupdatedexamdata-api")
+path("Tpostupdatedexamdata/<str:pid>/",views.Tpostexamdata,name="postupdatedexamdata-api"),
+path("Tupdateqpaperdata/<str:pid>/",views.Tupdqpaperdata,name="qpaperupdatedata-api"),
+path("Tpostupdatedqpaperdata/<str:pid>/",views.Tpostqpaperdata,name="postupdatedqpaperdata-api")
 ]
