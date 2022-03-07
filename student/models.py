@@ -7,7 +7,7 @@ class Qanswersheet(models.Model):
 	semail=models.CharField(max_length=200,default='studentemail')
 	sgrade=models.IntegerField(default=10,validators=[MaxValueValidator(12), MinValueValidator(10)])
 	stest=models.CharField(max_length=200,default='testname')
-	spoint=models.CharField(max_length=200,default='marksobtained')
+	spoint=models.CharField(max_length=200,default='0')
 	sremark=models.CharField(max_length=500,default='remark')
 
 class MockAnswer(models.Model):

@@ -250,6 +250,7 @@ def Aquizresultlist(request,sid,mil,std,tid,pnt):
 
 @api_view(['POST'])
 def Aqresultlist(request,mil):
+	Qanswersheet.objects.all().filter(spoint="0",semail=mil).delete()
 	Qanswersheet.objects.all().filter(spoint="tempo",semail=mil).delete()
 	serializer = QresultSerializer(data=request.data)
 	if serializer.is_valid():
@@ -293,16 +294,20 @@ def Amockqplist(request,tid):
 @api_view(['GET'])
 def Amtempolist(request,nme,mil):
 	attm=MockAnswer.objects.all().filter(testname=nme,semail=mil)
-	if attm:
-		serializer = AttMockSerializer(attm,many=True)
-		return Response(serializer.data)
-	else:
-		MockAnswer.objects.create(semail=mil,testname=nme,tempo=69)
-		serializer = AttMockSerializer(attm,many=True)
-		return Response(serializer.data)
+	serializer = AttMockSerializer(attm,many=True)
+	return Response(serializer.data)
+	# if attm:
+	# 	serializer = AttMockSerializer(attm,many=True)
+	# 	return Response(serializer.data)
+	# else:
+	# 	MockAnswer.objects.create(semail=mil,testname=nme,tempo=0)
+	# 	serializer = AttMockSerializer(attm,many=True)
+	# 	return Response(serializer.data)
 
 @api_view(['POST'])
 def Amresultlist(request,mil):
+	MockAnswer.objects.all().filter(tempo=0,semail=mil).delete()
+	MockAnswer.objects.all().filter(tempo=1,semail=mil).delete()
 	MockAnswer.objects.all().filter(tempo=69,semail=mil).delete()
 	serializer = AttMockSerializer(data=request.data)
 	if serializer.is_valid():
