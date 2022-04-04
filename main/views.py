@@ -59,7 +59,7 @@ def edit(request):
 #API
 @api_view(['GET'])
 def Abooklist(request):
-	books = Books.objects.all().filter(visible=True).order_by('-id')
+	books = Books.objects.all().order_by('-id')
 	serializer = BookSerializer(books, many=True)
 	return Response(serializer.data)
 
@@ -344,7 +344,7 @@ def Srevnotes(request,grd):
 	return Response(serializer.data)
 
 @api_view(['POST'])
-def Abooklist(request):
+def Addbooklist(request):
 	serializer = BookSerializer(data=request.data)
 	if serializer.is_valid():
 		print("SUCCESS")
