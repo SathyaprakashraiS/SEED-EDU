@@ -1,0 +1,273 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>SEED</title>
+  </head>
+  <body>
+  <link rel='stylesheet'  href="{% static 'CSS\master.css' %}">
+  <!--NAV BAR-->
+  <nav class="navbar navbar-dark bg-transparent">
+  <nav class="navbar navbar-expand-lg navbar-warning bg-transparent">
+  <a class="navbar-brand" href="#"><h1 style="color:#79E460;" >SEED</h1></a>
+  <button class="navbar-toggler" style="color: #000000" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="material-icons">menu</span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#79E460;" href="/home"><b>HOME</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>COLLEGES</b></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>BOOKS</b></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>EXAMS</b></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>NEWS</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>COURSES</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FF0000;" href="#"><b>QUESTION BANK</b></a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+     <!--text here-->
+    </span>
+  </div>
+</nav>
+</nav>
+
+
+ 
+<!-- 
+{% for i in paper %}
+     <p>{{i.cquestion}}</p><br>
+     <p>{{i.coption1}}</p><br>
+     <p>{{i.coption2}}</p><br>
+     <p>{{i.coption3}}</p><br>
+     <p>{{i.coption4}}</p><br>
+
+{% endfor %}
+-->
+{% if b != None %}
+<div class="test">
+  <h1 style="text-align: center;">{{theb|title}}</h1>
+  <!--<p>No of Questions:{{qno.count}}</p>-->
+  <!--<ul>
+    <li>lol
+    </li>
+  </ul>-->
+  <div class="warntext">
+    <ul>
+  <li><p><b>M</b>ake sure you have a good internet connection to attend the exam</p></li>
+  <li><p><b>A</b>ttending the quiz in PC is advisable</p></li>
+  <li><p><b>O</b>nce the exam is started you can't navigate back</p></li>
+  <li><p><b>E</b>ach question holds 1 mark each</p></li>
+  <li><p><b>I</b>f facing any issues do press the report button immediatly</p></li>
+  <li><p><b>S</b>ubmit the exam before the time runs out, Failing to submit then the form gets auto-submitted</p></li>
+  <li><p><b>T</b>rying to alternate between pages closes the exam automatically</p></li>
+  <li><p><b>P</b>ress start button to start the exam </p></li>
+</ul>
+</div>
+<p style="text-align: left;font-size: 80%;padding-left:2%"><b>Duration:</b>3 Hours</p>
+<h1 style="text-align: center;">ALL THE BEST!</h1>
+<form id="form-id" method="post" action="mockexam/">
+  {% csrf_token %}
+  <input type="hidden" name="mockname" value="{{b}}"/>
+  <a href="/student/" class="butto">back</a><button type="submit" class="buttonn">start</button></form>   
+<!--
+  <p name="custom" id="custom" value="{{b}}">ee{{b}}</p>
+  <a href="quiz/">start</p>-->
+</div>
+{% else %}
+<p>u are not allowed to access this page privately</p>
+{% endif %}
+
+</body>
+<style type="text/css">
+/*@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
+:root {
+  --d: 700ms;
+  --e: cubic-bezier(0.19, 1, 0.22, 1);
+  --font-sans: "Rubik", sans-serif;
+  --font-serif: "Cardo", serif;
+}*/
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.test
+{ 
+  width: 50%;
+  /*position: fixed;*/
+  margin-left: 25%;
+  margin-top: 2%;
+  
+  /*top: 50%;
+  left: 50%;*/
+
+  /*transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);*/
+  font-size: 20px;
+  background-color: white;
+  border: black 5px solid;
+  padding: 5px;
+  /*z-index: 100;
+  user-select: none;*/
+}
+
+.warntext
+{
+  font-size: 75%;
+  padding-left: 2%;
+  padding-top: 1%;
+}
+
+.buttonn {
+  background-color: #04AA6D;
+  border: none;
+  border-radius:12px;
+  color: white;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.butto {
+  background-color: #04AA6D;
+  border: none;
+  border-radius:12px;
+  color: white;
+  padding: 10px;
+  width: 100px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  align-items: right;
+}
+
+.buttoncenter
+{
+  text-align: right;
+}
+
+.bbuttoncenter
+{
+  text-align: left;
+}
+
+.dd_heading{
+  text-align: center;
+  font-family: roboto thin;
+}
+
+.page-content {
+  display: grid;
+  grid-gap: 1rem;
+  padding: 1rem;
+  max-width: 1024px;
+  margin: 0 auto;
+  font-family: var(--font-sans);
+}
+
+</style>
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <script>
+      var count = document.getElementById('count').innerHTML;
+      count=count*10;
+      /*console.log("cont is "+cont)*/
+      /*var count=10;*/
+      var interval = setInterval(function()
+      {
+        document.getElementById('time').innerHTML=count-1;
+        /*count=document.getElementById('count').innerHTML;*/
+        count--;
+        if (count == 0)
+        {
+          clearInterval(interval);
+          /*document.getElementById('time').innerHTML='Done';*/
+
+          alert("You're time has expired and the form is being submitted");
+          document.forms["TheForm"].submit();
+        }
+      }, 1000);
+    </script>
+
+    <script type="text/javascript">
+  var oditan=0;
+  function check()
+  {
+    if(document.hasFocus() == lastFocusStatus)
+      return;
+    lastFocusStatus = !lastFocusStatus;
+    statusEl.innerText = lastFocusStatus ? 'with' : oditan=checkrunner(oditan),thookividu(oditan);
+  }
+
+  window.statusEl = document.getElementById("status");
+  window.lastFocusStatus = document.hasFocus();
+  check();
+  setInterval(check, 1500);
+  function checkrunner(a) {  
+            a=a+1;
+            return a;  
+         } 
+  function thookividu(q){
+    if (q==1)
+    {
+      alert("exiting the exam again will automatically close the exam")
+    }
+    if (q==2)
+    {
+      alert("nnoru tharava veliya ponnena thooki adichuruven pathuko")
+    }
+    if (q>=3)
+    {
+      document.forms["TheForm"].submit();
+    }
+  } 
+</script>
+
+  </body>
+</html>

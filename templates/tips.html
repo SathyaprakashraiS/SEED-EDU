@@ -1,0 +1,306 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+    <title>SEED</title>
+        
+    </head>
+    <body>
+        <link rel='stylesheet'  href="{% static 'CSS\master.css' %}">
+  <!--NAV BAR-->
+  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-warning ">
+  <a class="navbar-brand" href="/"><b style="color:#FFFFFF;font-size:140%" >SEED</b></a>
+  <button class="navbar-toggler" style="color: #FFFFFF" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="material-icons">menu</span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#FFFFFF;" href="/"><div class="hovermenu"><span class="material-icons">home</span>
+            <b style="color:#64DFDF;">HOME</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/college"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COLLEGES</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/library"><div class="hovermenu"><span class="material-icons">local_library</span>
+            <b style="color:#64DFDF;">LIBRARY</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/exam"><div class="hovermenu"><span class="material-icons">edit</span>
+            <b style="color:#64DFDF;">EXAMS</b></div></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/news"><div class="hovermenu"><span class="material-icons">newspaper</span>
+            <b style="color:#64DFDF;">NEWS</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/course"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COURSES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/date"><div class="hovermenu"><span class="material-icons">event_note</span>
+            <b style="color:#64DFDF;">DATES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/questionpaper"><div class="hovermenu"><span class="material-icons">savings</span>
+            <b style="color:#64DFDF;">QUESTION BANK</b></div></a>
+      </li>
+      <li>
+        <div class="dropdown">
+            <a class="nav-link" style="color:#FFFFFF;"><div class="hovermenu"><span class="material-icons">tips_and_updates</span>
+                <b style="color:#80FFD8;font-size:110%">TIPS</b></div></a>
+            <div class="dropdown-content">
+                <a href="/other/FAQ" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">quiz</span>
+                    <b style="color:#64DFDF;">FAQ</b></a>
+                <a href="/other/rnotes" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">preview</span>
+                    <b style="color:#64DFDF;">REVISION NOTES</b></a>
+                <!-- <a href="/other/tips" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">tips_and_updates</span>
+                    <b style="color:#64DFDF;">TIPS N TRICKS</b></a> -->
+                <a href="/other/courses" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">shopping_cart</span>
+                    <b style="color:#64DFDF;">ONLINE COURSE</b></a>
+                <a href="/other/vids" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">video_library</span>
+                    <b style="color:#64DFDF;">VIDEOS</b></a>
+            </div>
+        </div>
+      </li>
+    {% if user.is_authenticated %}
+    {% if user.teacher %}
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/teacher/"><div class="hovermenu"><span class="material-icons">person</span>
+            <b style="color:#64DFDF;">TEACHER PORTAL</b></div></a>
+        </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/student/"><div class="hovermenu"><span class="material-icons">person</span>
+        <b style="color:#64DFDF;">STUD PORTAL</b></div></a>
+    </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% endif %}
+      {% else %}
+        <li class="nav-item">
+            <a class="nav-link"  style="color:#FFFFFF;" href="login/"class="logbutton">
+                <div class="hovermenu"><span class="material-icons">login</span>
+                <b style="color:#64DFDF;">LOGIN / SIGNUP</b>
+                </div>
+            </a>
+        </li>
+      {% endif %}
+        </ul>
+    </div>
+    <span class="navbar-text">
+    </span>
+  </div>
+</nav>
+</nav>
+
+<h1 style="text-align:center;margin-top:1%;"><b>TIPS n TRICKS</b></h1>
+{% for i in tips %}
+<div class="card">  
+  <br>
+      <a href="{{i.link}}" style="color:#000000;font-size:102%"><b>{{i.name}}</b></a>
+      <br>
+      <img src="{{i.thumbnail.url}}" class="im" alt="not found">
+      <br>
+      {% if i.isvideo %}
+      <a href="{{i.link}}"><button>View video</button></a>
+      {% endif %}
+      {% if i.istext %}
+      <div id="overlay" onclick="off()">
+        <div id="text"><b id="titlepos"></b><p id="datapos"></p></div>
+      </div>
+      <!-- <a style="font-size:85%"><p>{{i.description}}</p></a> -->
+      
+      <button onclick="on()">View tip <p id="carddata" hidden>{{i.name}}</p>
+      <p id="cardtitle" hidden>{{i.description}}</p></button>
+      <script>
+    function on() {
+      document.getElementById("overlay").style.display = "block";
+      var q=document.getElementById("carddata").innerHTML;
+      var w=document.getElementById("cardtitle").innerHTML;
+      document.getElementById("datapos").innerHTML = q;
+      document.getElementById("titlepos").innerHTML = w;
+    }
+    function off() {
+      document.getElementById("overlay").style.display = "none";
+    }
+  </script>
+      
+      {% endif %}
+      {% if i.isfile %}
+      <!-- <a style="font-size:85%"><p>{{i.description}}</p></a> -->
+      <a href="{{i.tipfile.url}}"><button>View file</button></a>
+      {% endif %}
+</div>
+{% endfor %}
+        
+<style type="text/css">
+body {
+
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+  position: fixed; 
+  overflow-y: scroll;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 110%;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+.card{
+    width:30%;
+    grid-template-columns: auto auto auto auto;
+    margin-left:3%;
+    margin-right:0%;
+    margin-top:1%;
+    /*margin-bottom:5%;*/
+    margin-bottom: 1%;
+    background-color:#FFFFFF;
+    border-radius:4%;
+    height:500px;
+    /*overflow: hidden;*/
+   } 
+   .im{
+     size:45%;
+     height:325px;
+     transition: transform .2s;
+   }
+   .im:hover {
+  transform: scale(1.1);
+}
+
+
+body{
+    background-color: #80FFDB;
+}
+.dropbtn {
+  /*background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;*/
+  background-color: #80FFD8;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10%;
+  width: auto;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #7400B8;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #80FFd8;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #4EA8DE;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #80FFD8;}
+
+.navbar-custom{
+    /*background-color: #80FFD8;*/
+    background-color: #7400B8;
+}
+.hovermenu {
+  position: relative;
+}
+.hovermenu:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #fff;
+  height: 3px;
+}
+.hovermenu:hover:after {
+  width: 100%;
+}
+</style>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

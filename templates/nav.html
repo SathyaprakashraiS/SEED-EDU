@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="navlist">
+                <li>
+                    <img class="profile" src="https://static.onecms.io/wp-content/uploads/sites/6/2016/10/dr-strange.jpg" />
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">
+                    PAGE1
+                </a></li>
+                <li  class="nav-item"><a class="nav-link" href="#">PAGE2</a></li>
+            </ul>
+        </nav>
+        <main>
+            <h1>hello</h1>
+        </main>
+    </body>
+    
+<style type="text/css">
+
+
+body {
+  color: white;
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    margin-bottom:50px;
+    
+}
+.nav-link{
+    text-decoration: none;
+    color:white;
+}
+
+
+
+main {
+  margin-left: 5rem;
+  padding: 1rem;
+}
+
+.navbar {
+  position: fixed;
+  background-color:peru;
+  transition: width 600ms ease;
+  overflow: auto;
+
+}
+.nav-item{
+    
+    padding:0.5rem;
+}
+
+.nav-item:hover{
+  
+    background-color:black;
+    display: inline;
+}
+
+.navlist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .navbar {
+    bottom: 0;
+    width: 100vw;
+    height: 5rem;
+  }
+
+
+  .navlist{
+    flex-direction: row;
+  }
+
+  main {
+    margin: 0;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar {
+    top: 0;
+    width: 5rem;
+    height: 100vh;
+  }
+
+  .navbar:hover {
+    width: 16rem;
+    
+  }
+
+  .navbar:hover .profile{
+      width:100px;
+      height:100px;
+  }
+
+
+ 
+
+}
+
+
+ 
+       
+     
+       
+      
+</style>
+
+</html>

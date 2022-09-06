@@ -1,0 +1,494 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>SEED</title>
+  </head>
+  <body>
+  <link rel='stylesheet'  href="{% static 'CSS\master.css' %}">
+  <!--NAV BAR-->
+  <nav class="navbar navbar-dark bg-transparent">
+  <nav class="navbar navbar-expand-lg navbar-warning bg-transparent">
+  <a class="navbar-brand" href="#"><h1 style="color:#79E460;" >SEED</h1></a>
+  <button class="navbar-toggler" style="color: #000000" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="material-icons">menu</span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#79E460;" href="/home"><b>HOME</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>COLLEGES</b></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>BOOKS</b></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>EXAMS</b></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>NEWS</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>COURSES</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FF0000;" href="#"><b>QUESTION BANK</b></a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+     <!--text here-->
+    </span>
+  </div>
+</nav>
+</nav>
+
+<h1 style="text-align:center;"><b>|_o_|</b></h1>
+ 
+<!-- 
+{% for i in paper %}
+     <p>{{i.cquestion}}</p><br>
+     <p>{{i.coption1}}</p><br>
+     <p>{{i.coption2}}</p><br>
+     <p>{{i.coption3}}</p><br>
+     <p>{{i.coption4}}</p><br>
+
+{% endfor %}
+-->
+
+<!--
+{% for i in submitted %}
+<p>{{i}}<p>
+{% endfor %}
+
+
+<p>{{submitted}}</p>
+<br>
+<p>{{ans}}</p>
+-->
+<p>SCORE: {{score}}</p>
+<p>CORRECT: {{correct}}</p>
+<p>WRONG: {{wrong}}</p>
+<p>TOTAL: {{total}}</p>
+
+
+
+
+</body>
+<style type="text/css">
+@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
+:root {
+  --d: 700ms;
+  --e: cubic-bezier(0.19, 1, 0.22, 1);
+  --font-sans: "Rubik", sans-serif;
+  --font-serif: "Cardo", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+
+.dd_heading{
+  text-align: center;
+  font-family: roboto thin;
+}
+
+.page-content {
+  display: grid;
+  grid-gap: 1rem;
+  padding: 1rem;
+  max-width: 1024px;
+  margin: 0 auto;
+  font-family: var(--font-sans);
+}
+@media (min-width: 600px) {
+  .page-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 800px) {
+  .page-content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.d_card {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: end;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  color: whitesmoke;
+  background-color: whitesmoke;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1),
+    0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1),
+    0 16px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  margin-right:20%;
+  margin-bottom:10%;
+}
+@media (min-width: 600px) {
+  .d_card {
+    height: 390px;
+  }
+}
+.d_card:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  background-size: cover;
+  background-position: 0 0;
+  -webkit-transition: -webkit-transform calc(var(--d) * 1.5) var(--e);
+  transition: -webkit-transform calc(var(--d) * 1.5) var(--e);
+  transition: transform calc(var(--d) * 1.5) var(--e);
+  transition: transform calc(var(--d) * 1.5) var(--e),
+    -webkit-transform calc(var(--d) * 1.5) var(--e);
+  pointer-events: none;
+}
+.d_card:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  pointer-events: none;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0)),
+    color-stop(11.7%, rgba(0, 0, 0, 0.009)),
+    color-stop(22.1%, rgba(0, 0, 0, 0.034)),
+    color-stop(31.2%, rgba(0, 0, 0, 0.072)),
+    color-stop(39.4%, rgba(0, 0, 0, 0.123)),
+    color-stop(46.6%, rgba(0, 0, 0, 0.182)),
+    color-stop(53.1%, rgba(0, 0, 0, 0.249)),
+    color-stop(58.9%, rgba(0, 0, 0, 0.32)),
+    color-stop(64.3%, rgba(0, 0, 0, 0.394)),
+    color-stop(69.3%, rgba(0, 0, 0, 0.468)),
+    color-stop(74.1%, rgba(0, 0, 0, 0.54)),
+    color-stop(78.8%, rgba(0, 0, 0, 0.607)),
+    color-stop(83.6%, rgba(0, 0, 0, 0.668)),
+    color-stop(88.7%, rgba(0, 0, 0, 0.721)),
+    color-stop(94.1%, rgba(0, 0, 0, 0.762)),
+    to(rgba(0, 0, 0, 0.79))
+  );
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.009) 11.7%,
+    rgba(0, 0, 0, 0.034) 22.1%,
+    rgba(0, 0, 0, 0.072) 31.2%,
+    rgba(0, 0, 0, 0.123) 39.4%,
+    rgba(0, 0, 0, 0.182) 46.6%,
+    rgba(0, 0, 0, 0.249) 53.1%,
+    rgba(0, 0, 0, 0.32) 58.9%,
+    rgba(0, 0, 0, 0.394) 64.3%,
+    rgba(0, 0, 0, 0.468) 69.3%,
+    rgba(0, 0, 0, 0.54) 74.1%,
+    rgba(0, 0, 0, 0.607) 78.8%,
+    rgba(0, 0, 0, 0.668) 83.6%,
+    rgba(0, 0, 0, 0.721) 88.7%,
+    rgba(0, 0, 0, 0.762) 94.1%,
+    rgba(0, 0, 0, 0.79) 100%
+  );
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -webkit-transition: -webkit-transform calc(var(--d) * 2) var(--e);
+  transition: -webkit-transform calc(var(--d) * 2) var(--e);
+  transition: transform calc(var(--d) * 2) var(--e);
+  transition: transform calc(var(--d) * 2) var(--e),
+    -webkit-transform calc(var(--d) * 2) var(--e);
+}
+.d_card:nth-child(1):before {
+  background-image: url("{% static 'images/CBSE.png'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(2):before {
+  background-image: url("{% static 'images/CBSE.png'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(3):before {
+  background-image: url("{% static 'images/CBSE.png'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(4):before {
+  background-image: url("{% static 'images/ACLAT.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(5):before {
+  background-image: url("{% static 'images/AIEED.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(6):before {
+  background-image: url("{% static 'images/AIIMS.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(7):before {
+  background-image: url("{% static 'images/AILET.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(8):before {
+  background-image: url("{% static 'images/AMU.png'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(9):before {
+  background-image: url("{% static 'images/BITSAT.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(10):before {
+  background-image: url("{% static 'images/CLAT.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(11):before {
+  background-image: url("{% static 'images/COMEDK.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(12):before {
+  background-image: url("{% static 'images/CUSAT.png'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(13):before {
+  background-image: url("{% static 'images/ICAR.png'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(14):before {
+  background-image: url("{% static 'images/IPUCET.png'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(15):before {
+  background-image: url("{% static 'images/MAIN.jpg'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(16):before {
+  background-image: url("{% static 'images/ADVANCED.png'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(17):before {
+  background-image: url("{% static 'images/JIPMER.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(18):before {
+  background-image: url("{% static 'images/KVPY.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(19):before {
+  background-image: url("{% static 'images/NATA.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(20):before {
+  background-image: url("{% static 'images/NDA.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(21):before {
+  background-image: url("{% static 'images/NEET.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(22):before {
+  background-image: url("{% static 'images/NEST.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(23):before {
+  background-image: url("{% static 'images/NID.jpg'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(24):before {
+  background-image: url("{% static 'images/NIFT.png'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(25):before {
+  background-image: url("{% static 'images/SAT.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.d_card:nth-child(26):before {
+  background-image: url("{% static 'images/VITEEE.jfif'%}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.content {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  -webkit-transition: -webkit-transform var(--d) var(--e);
+  transition: -webkit-transform var(--d) var(--e);
+  transition: transform var(--d) var(--e);
+  transition: transform var(--d) var(--e), -webkit-transform var(--d) var(--e);
+  z-index: 1;
+}
+.content > * + * {
+  margin-top: 1rem;
+}
+
+.heading {
+  font-size: 1.3rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.data-content {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+@media (hover: hover) and (min-width: 600px) {
+  .d_card:after {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  .content {
+    -webkit-transform: translateY(calc(100% - 4.5rem));
+    transform: translateY(calc(100% - 4.5rem));
+  }
+  .content > *:not(.heading) {
+    opacity: 0;
+    -webkit-transform: translateY(1rem);
+    transform: translateY(1rem);
+    -webkit-transition: opacity var(--d) var(--e),
+      -webkit-transform var(--d) var(--e);
+    transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+    transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+    transition: transform var(--d) var(--e), opacity var(--d) var(--e),
+      -webkit-transform var(--d) var(--e);
+  }
+
+  .d_card:hover,
+  .d_card:focus-within {
+    -webkit-box-align: center;
+    align-items: center;
+  }
+  .d_card:hover:before,
+  .d_card:focus-within:before {
+    -webkit-transform: translateY(-4%);
+    transform: translateY(-4%);
+  }
+  .d_card:hover:after,
+  .d_card:focus-within:after {
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  .d_card:hover .content,
+  .d_card:focus-within .content {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .d_card:hover .content > *:not(.heading),
+  .d_card:focus-within .content > *:not(.heading) {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition-delay: calc(var(--d) / 8);
+    transition-delay: calc(var(--d) / 8);
+  }
+
+  .d_card:focus-within:before,
+  .d_card:focus-within:after,
+  .d_card:focus-within .content,
+  .d_card:focus-within .content > *:not(.heading) {
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+  }
+}
+
+</style>
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

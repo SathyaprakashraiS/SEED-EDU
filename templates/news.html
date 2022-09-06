@@ -1,0 +1,407 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>SEED</title>
+  </head>
+  <body>
+  <link rel='stylesheet'  href="{% static 'CSS\master.css' %}">
+  <!--NAV BAR-->
+  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-warning ">
+  <a class="navbar-brand" href="/"><b style="color:#FFFFFF;font-size:140%" >SEED</b></a>
+  <button class="navbar-toggler" style="color: #FFFFFF" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="material-icons">menu</span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#FFFFFF;" href="/"><div class="hovermenu"><span class="material-icons">home</span>
+            <b style="color:#64DFDF;">HOME</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/college"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COLLEGES</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/library"><div class="hovermenu"><span class="material-icons">local_library</span>
+            <b style="color:#64DFDF;">LIBRARY</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/exam"><div class="hovermenu"><span class="material-icons">edit</span>
+            <b style="color:#64DFDF;">EXAMS</b></div></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/news"><div class="hovermenu"><span class="material-icons">newspaper</span>
+            <b style="color:#80FFD8;font-size:110%">NEWS</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/course"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COURSES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/date"><div class="hovermenu"><span class="material-icons">event_note</span>
+            <b style="color:#64DFDF;">DATES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/questionpaper"><div class="hovermenu"><span class="material-icons">savings</span>
+            <b style="color:#64DFDF;">QUESTION BANK</b></div></a>
+      </li>
+      <li>
+        <div class="dropdown">
+            <a class="nav-link" style="color:#FFFFFF;"><div class="hovermenu"><span class="material-icons">more_horiz</span>
+                <b style="color:#64DFDF;">OTHER</b></div></a>
+            <div class="dropdown-content">
+                <a href="/other/FAQ" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">quiz</span>
+                    <b style="color:#64DFDF;">FAQ</b></a>
+                <a href="/other/rnotes" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">preview</span>
+                    <b style="color:#64DFDF;">REVISION NOTES</b></a>
+                <a href="/other/tips" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">tips_and_updates</span>
+                    <b style="color:#64DFDF;">TIPS N TRICKS</b></a>
+                <a href="/other/courses" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">shopping_cart</span>
+                    <b style="color:#64DFDF;">ONLINE COURSE</b></a>
+                <a href="/other/vids" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">video_library</span>
+                    <b style="color:#64DFDF;">VIDEOS</b></a>
+            </div>
+        </div>
+      </li>
+    {% if user.is_authenticated %}
+    {% if user.teacher %}
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/teacher/"><div class="hovermenu"><span class="material-icons">person</span>
+            <b style="color:#64DFDF;">TEACHER PORTAL</b></div></a>
+        </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/student/"><div class="hovermenu"><span class="material-icons">person</span>
+        <b style="color:#64DFDF;">STUD PORTAL</b></div></a>
+    </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% endif %}
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link"  style="color:#FFFFFF;" href="login/"class="logbutton">
+                <div class="hovermenu"><span class="material-icons">login</span>
+                <b style="color:#64DFDF;">LOGIN / SIGNUP</b>
+                </div>
+            </a>
+        </li>
+        {% endif %}
+        </ul>
+      </div>
+    <span class="navbar-text">
+    </span>
+  </div>
+</nav>
+</nav>
+
+<p style="color:#000000;text-align:center;font-size:200%;"><b>CURRENT AFFAIRS</b></p>
+
+
+<div class="container">
+  {% for i in n %}
+  <div class="card">
+    <div class="news-item">
+      
+        <div class="newsimg">
+          <img class="img-responsive" src="{{i.img.url}}" alt="">
+        </div>
+        <div class="news-content">
+          <!-- <div class="news_postdate">
+            <span>{{i.date}}</span>
+          </div> -->
+          <a href="{{i.url}}"><h3>{{i.name}}</h3></a>
+          <p>{{i.liner}}</p>
+          <!--<div class="news_authorinfo">as</div> venumna inga author oda per podalam venumna pinnadi blog ku use panlam  -->
+        </div>
+      
+    </div>
+  </div>
+  {% endfor %}
+ 
+</div>
+
+
+</body>
+<style type="text/css">
+body{
+    background-color: #80FFD8;
+}
+
+.container {
+  margin-top: 3%;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 5%;
+}
+
+.card{
+    height: 500px;
+    /*border:5px solid darkblue;*/
+    /*background-color: #4EA8DE;*/
+    border-radius: 7px;
+    border:5px solid darkblue;
+}
+
+      h1,h2,h3,h4,h5,h6{}
+      a,a:hover,a:focus,a:active
+      {
+            text-decoration: none;
+            outline: none;
+      }
+        
+      a,a:active,a:focus
+      {
+            color: #333;
+            text-decoration: none;
+            transition-timing-function: ease-in-out;
+            -ms-transition-timing-function: ease-in-out;
+            -moz-transition-timing-function: ease-in-out;
+            -webkit-transition-timing-function: ease-in-out;
+            -o-transition-timing-function: ease-in-out;
+            transition-duration: .2s;
+            -ms-transition-duration: .2s;
+            -moz-transition-duration: .2s;
+            -webkit-transition-duration: .2s;
+            -o-transition-duration: .2s;
+      }
+      ul
+      {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+      }
+        
+span, a, a:hover {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+.news-content {
+    padding: 40px 30px;
+
+}
+
+.news-item {
+    box-shadow: 0 0 15px #ededed;
+    -webkit-transition: .5s;
+    -o-transition: .5s;
+    transition: .5s;
+    margin-bottom: 40px;
+    height: 500px;
+
+}
+
+.news-item:hover {
+    -webkit-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    transform: translateY(-10px);
+    -webkit-box-shadow: 0px 15px 15px 0px #edeaea;
+    box-shadow: 0px 15px 15px 0px #edeaea;
+}
+
+.newsimg img {
+    size:40%;
+    width: 100%;
+    height:325px;
+}
+
+.news_postdate {
+    color: #FF3A46;
+}
+
+.news-content h3 {
+    color: #233D63;
+    font-size: 22px;
+    margin-bottom: 25px;
+}
+
+.news_authorinfo {
+    border: transparent;
+    padding: 14px 0px 0px 0px;
+    background: transparent;
+    font-size: 14px;
+}
+
+.news_authorinfo i {
+    margin-right: 6px;
+}
+
+.news_authorinfo span:last-child {
+    float: right;
+}
+
+.news_authorinfo a {
+    color: #666;
+}
+
+.center .news-content {
+    background: linear-gradient(-120deg, #8758ff 0, #614ef9 100%);
+}
+
+.center .news-content h3,
+.center .news-content p {
+    color: #fff;
+}
+
+.center .news_authorinfo a,
+.center .news_authorinfo i {
+    color: #fff;
+}
+
+.news-slide.owl-carousel .col-lg-4 {
+    max-width: 100%;
+    padding: 0;
+}
+
+.news-section .owl-theme .owl-nav [class*="owl-"] {
+    color: #333;
+    font-size: 14px;
+    margin: 5px;
+    padding: 4px 7px;
+    background: #fff;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+.small-title {
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #FF3A46;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  font-weight: 600;
+}
+.big-title {
+    letter-spacing: 0px;
+    padding-bottom: 13px;
+    position: relative;
+    color: #233D63;
+    line-height: 50px;
+    font-size: 36px;
+    text-transform: capitalize;
+    font-weight: 600;
+    text-align: center;
+}
+.main-title-box {
+    margin-bottom: 60px;
+}
+
+
+.dropbtn {
+  /*background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;*/
+  background-color: #80FFD8;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10%;
+  width: auto;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #7400B8;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #80FFd8;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #4EA8DE;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #80FFD8;}
+
+.navbar-custom{
+    /*background-color: #80FFD8;*/
+    background-color: #7400B8;
+}
+.hovermenu {
+  position: relative;
+}
+.hovermenu:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #fff;
+  height: 3px;
+}
+.hovermenu:hover:after {
+  width: 100%;
+}
+</style>
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

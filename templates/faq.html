@@ -1,0 +1,491 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&display=swap" rel="stylesheet">
+        
+    <title>SEED</title>
+        
+    </head>
+    <body>
+        <link rel='stylesheet'  href="{% static 'CSS\master.css' %}">
+  <!--NAV BAR-->
+  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-warning ">
+  <a class="navbar-brand" href="/"><b style="color:#FFFFFF;font-size:140%" >SEED</b></a>
+  <button class="navbar-toggler" style="color: #FFFFFF" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="material-icons">menu</span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#FFFFFF;" href="/"><div class="hovermenu"><span class="material-icons">home</span>
+            <b style="color:#64DFDF;">HOME</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/college"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COLLEGES</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/library"><div class="hovermenu"><span class="material-icons">local_library</span>
+            <b style="color:#64DFDF;">LIBRARY</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/exam"><div class="hovermenu"><span class="material-icons">edit</span>
+            <b style="color:#64DFDF;">EXAMS</b></div></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/news"><div class="hovermenu"><span class="material-icons">newspaper</span>
+            <b style="color:#64DFDF;">NEWS</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/course"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COURSES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/date"><div class="hovermenu"><span class="material-icons">event_note</span>
+            <b style="color:#64DFDF;">DATES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/questionpaper"><div class="hovermenu"><span class="material-icons">savings</span>
+            <b style="color:#64DFDF;">QUESTION BANK</b></div></a>
+      </li>
+      <li>
+        <div class="dropdown">
+            <a class="nav-link" style="color:#FFFFFF;"><div class="hovermenu"><span class="material-icons">quiz</span>
+                <b style="color:#80FFD8;font-size:110%">FAQ</b></div></a>
+            <div class="dropdown-content">
+                <!-- <a href="/other/FAQ" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">quiz</span>
+                    <b style="color:#80FFD8;font-size:110%">FAQ</b></a> -->
+                <a href="/other/rnotes" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">preview</span>
+                    <b style="color:#64DFDF;">REVISION NOTES</b></a>
+                <a href="/other/tips" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">tips_and_updates</span>
+                    <b style="color:#64DFDF;">TIPS N TRICKS</b></a>
+                <a href="/other/courses" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">shopping_cart</span>
+                    <b style="color:#64DFDF;">ONLINE COURSE</b></a>
+                <a href="/other/vids" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">video_library</span>
+                    <b style="color:#64DFDF;">VIDEOS</b></a>
+            </div>
+        </div>
+      </li>
+    {% if user.is_authenticated %}
+    {% if user.teacher %}
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/teacher/"><div class="hovermenu"><span class="material-icons">person</span>
+            <b style="color:#64DFDF;">TEACHER PORTAL</b></div></a>
+        </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/student/"><div class="hovermenu"><span class="material-icons">person</span>
+        <b style="color:#64DFDF;">STUD PORTAL</b></div></a>
+    </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% endif %}
+      {% else %}
+        <li class="nav-item">
+            <a class="nav-link"  style="color:#FFFFFF;" href="login/"class="logbutton">
+                <div class="hovermenu"><span class="material-icons">login</span>
+                <b style="color:#64DFDF;">LOGIN / SIGNUP</b>
+                </div>
+            </a>
+        </li>
+      {% endif %}
+        </ul>
+    </div>
+    <span class="navbar-text">
+    </span>
+  </div>
+</nav>
+</nav>
+
+        <section class="main-section">
+  <div id="faqs" class="container">
+    <h2 class="line-heading">Frequently Asked Questions</h2>
+    <h3 class="large-heading">Some of the most common questions asked...</h3>
+    <div id="faqSection" class="fullwidth-container">
+      <div>
+        <button class="collapsible">Do you work full time as a developer?</button>
+        <div class="faq-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat neque eu odio convallis, porta consequat erat rhoncus. Curabitur vulputate porttitor lectus, vitae tincidunt dolor eleifend vitae. Praesent sollicitudin eros in finibus posuere. Quisque at turpis arcu. Sed condimentum elit ac elit rhoncus, volutpat feugiat orci accumsan. Maecenas tincidunt diam odio, sit amet tincidunt est tincidunt at. Suspendisse luctus dolor quis aliquam pulvinar. Ut non neque in lorem ullamcorper faucibus. In et neque in sem ultrices mattis. Duis eu mauris urna. Suspendisse vitae suscipit odio, suscipit convallis odio. Integer at consectetur sapien. Mauris ex tortor, gravida vel diam sit amet, congue ullamcorper enim. Curabitur viverra bibendum leo, et condimentum enim efficitur eu. Ut euismod finibus ligula at volutpat. Nulla sit amet sem non elit posuere fringilla in eu justo.</p>
+        </div>
+        <button class="collapsible">Do you require a deposit before working?</button>
+        <div class="faq-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat neque eu odio convallis, porta consequat erat rhoncus. Curabitur vulputate porttitor lectus, vitae tincidunt dolor eleifend vitae. Praesent sollicitudin eros in finibus posuere. Quisque at turpis arcu. Sed condimentum elit ac elit rhoncus, volutpat feugiat orci accumsan. Maecenas tincidunt diam odio, sit amet tincidunt est tincidunt at. Suspendisse luctus dolor quis aliquam pulvinar. Ut non neque in lorem ullamcorper faucibus. In et neque in sem ultrices mattis. Duis eu mauris urna. Suspendisse vitae suscipit odio, suscipit convallis odio. Integer at consectetur sapien. Mauris ex tortor, gravida vel diam sit amet, congue ullamcorper enim. Curabitur viverra bibendum leo, et condimentum enim efficitur eu. Ut euismod finibus ligula at volutpat. Nulla sit amet sem non elit posuere fringilla in eu justo.</p>
+        </div>
+        <button class="collapsible">Will I own the website?</button>
+        <div class="faq-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat neque eu odio convallis, porta consequat erat rhoncus. Curabitur vulputate porttitor lectus, vitae tincidunt dolor eleifend vitae. Praesent sollicitudin eros in finibus posuere. Quisque at turpis arcu. Sed condimentum elit ac elit rhoncus, volutpat feugiat orci accumsan. Maecenas tincidunt diam odio, sit amet tincidunt est tincidunt at. Suspendisse luctus dolor quis aliquam pulvinar. Ut non neque in lorem ullamcorper faucibus. In et neque in sem ultrices mattis. Duis eu mauris urna. Suspendisse vitae suscipit odio, suscipit convallis odio. Integer at consectetur sapien. Mauris ex tortor, gravida vel diam sit amet, congue ullamcorper enim. Curabitur viverra bibendum leo, et condimentum enim efficitur eu. Ut euismod finibus ligula at volutpat. Nulla sit amet sem non elit posuere fringilla in eu justo.</p>
+        </div>
+        <button class="collapsible">Are there other costs involved?</button>
+        <div class="faq-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat neque eu odio convallis, porta consequat erat rhoncus. Curabitur vulputate porttitor lectus, vitae tincidunt dolor eleifend vitae. Praesent sollicitudin eros in finibus posuere. Quisque at turpis arcu. Sed condimentum elit ac elit rhoncus, volutpat feugiat orci accumsan. Maecenas tincidunt diam odio, sit amet tincidunt est tincidunt at. Suspendisse luctus dolor quis aliquam pulvinar. Ut non neque in lorem ullamcorper faucibus. In et neque in sem ultrices mattis. Duis eu mauris urna. Suspendisse vitae suscipit odio, suscipit convallis odio. Integer at consectetur sapien. Mauris ex tortor, gravida vel diam sit amet, congue ullamcorper enim. Curabitur viverra bibendum leo, et condimentum enim efficitur eu. Ut euismod finibus ligula at volutpat. Nulla sit amet sem non elit posuere fringilla in eu justo.</p>
+          <ul>
+            <li>Custom LI</li>
+            <li>Custom LI</li>
+          </ul>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat neque eu odio convallis, porta consequat erat rhoncus. Curabitur vulputate porttitor lectus, vitae tincidunt dolor eleifend vitae. Praesent sollicitudin eros in finibus posuere. Quisque at turpis arcu. Sed condimentum elit ac elit rhoncus, volutpat feugiat orci accumsan.Contact me via <a href="mailto:#" target="_blank">EMAIL</a> and I will be more than happy to answer your queries.</p>
+        </div>
+      </div>
+      <div>
+        <button class="collapsible">What is hosting? Will I need it?</button>
+        <div class="faq-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat neque eu odio convallis, porta consequat erat rhoncus. Curabitur vulputate porttitor lectus, vitae tincidunt dolor eleifend vitae. Praesent sollicitudin eros in finibus posuere. Quisque at turpis arcu. Sed condimentum elit ac elit rhoncus, volutpat feugiat orci accumsan.</p>
+          <p>Maecenas tincidunt diam odio, sit amet tincidunt est tincidunt at. Suspendisse luctus dolor quis aliquam pulvinar. Ut non neque in lorem ullamcorper faucibus. In et neque in sem ultrices mattis. Duis eu mauris urna. Suspendisse vitae suscipit odio, suscipit convallis odio. Integer at consectetur sapien. Mauris ex tortor, gravida vel diam sit amet, congue ullamcorper enim. Curabitur viverra bibendum leo, et condimentum enim efficitur eu. Ut euismod finibus ligula at volutpat. Nulla sit amet sem non elit posuere fringilla in eu justo.</p>
+        </div>
+        <button class="collapsible">Will you work for equity on a new idea I have?</button>
+        <div class="faq-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat neque eu odio convallis, porta consequat erat rhoncus. Curabitur vulputate porttitor lectus, vitae tincidunt dolor eleifend vitae. Praesent sollicitudin eros in finibus posuere. Quisque at turpis arcu. Sed condimentum elit ac elit rhoncus, volutpat feugiat orci accumsan.</p>
+          <p>Maecenas tincidunt diam odio, sit amet tincidunt est tincidunt at. Suspendisse luctus dolor quis aliquam pulvinar. Ut non neque in lorem ullamcorper faucibus. In et neque in sem ultrices mattis. Duis eu mauris urna. Suspendisse vitae suscipit odio, suscipit convallis odio. Integer at consectetur sapien. Mauris ex tortor, gravida vel diam sit amet, congue ullamcorper enim. Curabitur viverra bibendum leo, et condimentum enim efficitur eu. Ut euismod finibus ligula at volutpat. Nulla sit amet sem non elit posuere fringilla in eu justo.</p>
+        </div>
+        <button class="collapsible">How much experience do you have?</button>
+        <div class="faq-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat neque eu odio convallis, porta consequat erat rhoncus. Curabitur vulputate porttitor lectus, vitae tincidunt dolor eleifend vitae. Praesent sollicitudin eros in finibus posuere. Quisque at turpis arcu. Sed condimentum elit ac elit rhoncus, volutpat feugiat orci accumsan.</p>
+        </div>
+        <button class="collapsible">What if I need changes. Can I edit it myself?</button>
+        <div class="faq-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec consequat neque eu odio convallis, porta consequat erat rhoncus. Curabitur vulputate porttitor lectus, vitae tincidunt dolor eleifend vitae. Praesent sollicitudin eros in finibus posuere. Quisque at turpis arcu. Sed condimentum elit ac elit rhoncus, volutpat feugiat orci accumsan.</p>
+          <p>Maecenas tincidunt diam odio, sit amet tincidunt est tincidunt at. Suspendisse luctus dolor quis aliquam pulvinar. Ut non neque in lorem ullamcorper faucibus. In et neque in sem ultrices mattis. Duis eu mauris urna. Suspendisse vitae suscipit odio, suscipit convallis odio. Integer at consectetur sapien. Mauris ex tortor, gravida vel diam sit amet, congue ullamcorper enim. Curabitur viverra bibendum leo, et condimentum enim efficitur eu. Ut euismod finibus ligula at volutpat. Nulla sit amet sem non elit posuere fringilla in eu justo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- commented footer -->
+  <!-- <div class="myFooter"></div> -->
+</section>
+        
+        <style type="text/css">
+        body {
+  padding:0;
+  margin:0;
+  background:#0A192F;
+  overflow-x: hidden;
+}
+.main-section {
+  float: left;
+  width: 100%;
+  display: block;
+  background: #0A192F;
+  height: 100vh;
+}
+.container {
+    float: left;
+    width: 80%;
+    margin: 2rem 10%;
+}
+.fullwidth-container {display:block;width:80%;margin:2rem 10%}
+#faqs {}
+.line-heading {
+  font-family: sans-serif;
+  color: #ccd6f6;
+  font-weight: 600;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  margin: 10px 0 40px 10%;
+  white-space: nowrap;
+  font-size: 26px;
+  text-shadow: 1px 1px 1px rgb(0,0,0);
+}
+.line-heading:after {
+  content: "";
+  display: block;
+  position: relative;
+  width: 300px;
+  height: 1px;
+  margin: 0 0 0 20px;
+  background: rgba(204,214,246,.2);
+  text-shadow: none;
+  transition: all .6s ease-in-out 0s
+}
+.line-heading:hover:after{
+  width: 180px;
+  background: rgba(204,214,246,.6);
+}
+h3.large-heading {
+    /* CONTENT FONT COLOR  */
+  font-family: sans-serif;
+  margin: 0 0 0 10%;
+  font-size: 52px;
+  line-height: 1.1;
+  letter-spacing: -.045em;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgb(0 0 0);
+}
+/** The Faq Section **/
+#faqSection div {
+  float: left;
+  display: inline-block;
+  width: 46%;
+  margin: 0 2%;
+  overflow: hidden;
+}
+#faqSection .collapsible {
+  background-color: #112240;
+  border: 1px solid hsla(0,0%,51.4%,.16);
+  border-radius: 7px;
+  box-shadow: 0 10px 30px -15px rgb(0 0 0);
+  transition: box-shadow .2s ease 0s;
+  color: #ccd6f6;
+  margin: 0 0 8px;
+  width: 100%;
+  padding: 12px;
+  font-family: sans-serif;
+  font-size: 15px;
+  text-align:left;
+}
+#faqSection .collapsible:hover {
+  box-shadow: 0 10px 60px -15px rgba(0,0,0,1);
+}
+#faqSection .active, #faqSection .collapsible:hover {}
+#faqSection .collapsible:after {content:"\002B";font-weight:bold;float:right;margin-left:5px}
+#faqSection .active:after {content:"\2212"}
+#faqSection .faq-content {
+  overflow: hidden;
+  width: calc(100% - 8%);
+  padding: 5px 2%;
+  transition: all .25s ease-in-out 0s;
+  background: #0b1629;
+  border: 1px solid hsla(0,0%,51.4%,.16);
+  border-radius: 7px;
+  max-height: 0px;
+  visibility: hidden;
+}
+#faqSection .faq-content p {
+  font-family: sans-serif;
+  color: #c2c2c2;
+  line-height: 140%;
+  font-size: 14px;
+  margin: 0 0 12px;
+  text-shadow: 1px 1px 0 rgb(0 0 0 / 80%);
+  font-weight: 100;
+}
+#faqSection .faq-content a {
+  color: #00C58E;
+  font-weight: 600;
+  letter-spacing: .05rem;
+}
+#faqSection .faq-content ul {border-left:2px solid #00C58E}
+#faqSection .faq-content li {
+  color: #bad2e2;
+  font-size: .85rem;
+  line-height: 160%;
+  font-weight: 200;
+  margin: 8px 0 8px 2%;
+  list-style: none;
+  width: 90%;
+  font-family: sans-serif;
+  text-shadow: 1px 1px 0 rgb(0 0 0);
+}
+.myFooter {
+  float: left;
+  width: 100%;
+  display: block;
+  background: #0A192F;
+  text-align:center;
+  height:10vh
+}
+.myFooter p {
+  color: #fff;
+  font-family: sans-serif;
+  text-shadow: 1px 1px 0 rgb(0 0 0);
+}
+.myFooter a {
+  color: #00C58E;
+  text-decoration:none
+}
+
+
+body{
+    background-color: #80FFDB;
+}
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+  border: 2px solid black;
+ }
+.tbl-content{
+  height:500px;
+  overflow-x:auto;
+  margin-top: 0px;
+  /*border: 1px solid rgba(255,255,255,0.3);*/
+  border: 2px solid black;
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  /*color: #fff;*/
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  /*color: #fff;*/
+  border-bottom: solid 2px black;
+  /*border-bottom: solid 1px rgba(255,255,255,0.1);*/
+}
+
+
+/* demo styles */
+
+
+body{
+  /*background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;*/
+  background-color: #80FFD8;
+}
+section{
+  margin-top: 1%;
+  margin-bottom: 5%;
+}
+
+
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+.dropbtn {
+  /*background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;*/
+  background-color: #80FFD8;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10%;
+  width: auto;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #7400B8;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #80FFd8;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #4EA8DE;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #80FFD8;}
+
+.navbar-custom{
+    /*background-color: #80FFD8;*/
+    background-color: #7400B8;
+}
+.hovermenu {
+  position: relative;
+}
+.hovermenu:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #fff;
+  height: 3px;
+}
+.hovermenu:hover:after {
+  width: 100%;
+}
+</style>
+
+    <script>
+            var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++){
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+      content.style.visibility = "hidden";
+      content.style.margin = "0 2%";
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+      content.style.visibility = "visible";
+      content.style.margin = "12px 2%";
+    }
+  });
+}
+        </script>
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+</html>

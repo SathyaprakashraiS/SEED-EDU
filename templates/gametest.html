@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+}
+</style>
+</head>
+<body onload="startGame()">
+<script>
+
+var myGamePiece;
+
+function startGame() {
+    //myGamePiece = new component(30, 30, "red", 10, 120);
+    myGamePiece= new component(70, 70, "{% static 'images/qread.jpg' %}", 10, 120,"image");
+    // img.src = "{% static 'sathya.jpeg' %}";
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height =window.innerHeight;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        var temp=0;
+        document.addEventListener("keypress", function(event)
+            {
+                console.log(temp)
+                if(event.keyCode == 32)//spacebar
+                    {
+                        event.preventDefault();
+                        myGamePiece.speedX = 0;
+                        myGamePiece.speedY = 0;
+                    }
+                if(event.keyCode == 119)//w
+                    {
+                        moveup()
+                        document.addEventListener("keyup",function(event){clearmove()});
+                    }
+                if(event.keyCode == 97)//a
+                    {
+                        moveleft()
+                        document.addEventListener("keyup",function(event){clearmove()});
+                    }
+                if(event.keyCode == 115)//s
+                    {
+                        movedown()
+                        document.addEventListener("keyup",function(event){clearmove()});
+                    }
+                if(event.keyCode == 100)//d
+                    {
+                        moveright()
+                        document.addEventListener("keyup",function(event){clearmove()});
+                    }
+                
+            },1);
+        document.addEventListener("keydown", function(event)
+            {
+                console.log(temp)
+                if(event.keyCode == 32)//spacebar
+                    {
+                        event.preventDefault();
+                        myGamePiece.speedX = 0;
+                        myGamePiece.speedY = 0;
+                    }
+                if(event.keyCode == 16)//shift
+                    {
+                        event.preventDefault();
+                        sprint()
+                        document.addEventListener("keyup",function(event){stopsprint()});
+                    }
+                if(event.keyCode == 87 || event.keyCode == 119)//W
+                    {
+                        sprintup()
+                        document.addEventListener("keyup",function(event){clearmove()});
+                    }
+                if(event.keyCode == 65 || event.keyCode == 97)//A
+                    {
+                        sprintleft()
+                        document.addEventListener("keyup",function(event){clearmove()});
+                    }
+                if(event.keyCode == 83 || event.keyCode == 115)//S
+                    {
+                        sprintdown()
+                        document.addEventListener("keyup",function(event){clearmove()});
+                    }
+                if(event.keyCode == 68 || event.keyCode == 100)//D
+                    {
+                        sprintright()
+                        document.addEventListener("keyup",function(event){clearmove()});
+                    }
+            },1);
+
+
+
+
+        this.interval = setInterval(updateGameArea, 20);
+    },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+}
+
+// IF THE GAMEOBJECT IS A RECTANGLE OR A SHAPE USE FILL FUNCTION
+// function component(width, height, color, x, y) {
+//     this.width = width;
+//     this.height = height;
+//     this.speedX = 0;
+//     this.speedY = 0;
+//     this.x = x;
+//     this.y = y;    
+//     this.update = function() {
+//         ctx = myGameArea.context;
+//         ctx.fillStyle = color;
+//         ctx.fillRect(this.x, this.y, this.width, this.height);
+//     }
+//     this.newPos = function() {
+//         this.x += this.speedX;
+//         this.y += this.speedY;        
+//     }    
+// }
+
+
+//IF GAMEOJECT IS A IMAGES IT USES THIS FUNCTION
+function component(width, height, color, x, y, type) {
+    this.type = type;
+    if (type == "image") {
+        this.image = new Image();
+        this.image.src = color;
+    }
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0; 
+    this.speed=0;
+    this.angle=1;   
+    this.moveAngle = 0;
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        if (type == "image") {
+            ctx.drawImage(this.image, 
+                this.x, 
+                this.y,
+                this.width, this.height);
+        } else {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+    }
+    this.newPos = function() {
+        this.angle += this.moveAngle * Math.PI / 180;
+        this.x += this.speedX * Math.sin(this.angle);
+        this.y += this.speedY * Math.cos(this.angle);        
+    }
+}
+
+function updateGameArea() {
+    myGameArea.clear();
+    myGamePiece.newPos();    
+    myGamePiece.update();
+}
+
+function moveup() {
+    myGamePiece.image.src = "{% static 'images/main.jpg' %}";
+    myGamePiece.speedY = -1; 
+}
+
+function movedown() {
+    myGamePiece.image.src = "{% static 'images/main.jpg' %}";
+    myGamePiece.speedY = 1; 
+}
+
+function moveleft() {
+    myGamePiece.image.src = "{% static 'images/main.jpg' %}";
+    myGamePiece.speedX = -1; 
+}
+
+function moveright() {
+    myGamePiece.image.src = "{% static 'images/main.jpg' %}";
+    myGamePiece.speedX = 1; 
+}
+
+function sprint(){
+    if(myGamePiece.speedX != 0)
+    {
+        if(myGamePiece.speedX >= 1)
+        {
+            myGamePiece.speedX = 3; 
+        }
+        if(myGamePiece.speedX <= -1)
+        {
+            myGamePiece.speedX = -3; 
+        }
+    }
+}
+
+function stopsprint(){
+    if(myGamePiece.speedX >= 1)
+    {
+        myGamePiece.speedX = 1; 
+    }
+    if(myGamePiece.speedX <= -1)
+    {
+        myGamePiece.speedX = -1; 
+    }
+}
+function sprintup() {
+    myGamePiece.image.src = "{% static 'images/main.jpg' %}";
+    myGamePiece.speedY = -3; 
+}
+
+function sprintdown() {
+    myGamePiece.image.src = "{% static 'images/main.jpg' %}";
+    myGamePiece.speedY = 3; 
+}
+
+function sprintleft() {
+    myGamePiece.image.src = "{% static 'images/main.jpg' %}";
+    myGamePiece.speedX = -3; 
+}
+
+function sprintright() {
+    myGamePiece.image.src = "{% static 'images/main.jpg' %}";
+    myGamePiece.speedX = 3; 
+}
+
+function clearmove(q) {
+    myGamePiece.image.src = "{% static 'images/qread.jpg' %}";
+    
+}
+</script>
+<div style="text-align:center;width:480px;">
+  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
+  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
+  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+  <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
+</div>
+
+<p>If you click a button the red square will start moving. The movement will stop when you stop pressing th button.</p>
+<p>We have added the ontouchstart event on the buttons, to make this example work for touch devices.</p>
+</body>
+</html>

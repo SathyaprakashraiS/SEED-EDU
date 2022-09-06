@@ -1,0 +1,205 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>SEED</title>
+  </head>
+  <body>
+  <link rel='stylesheet'  href="{% static 'CSS\master.css' %}">
+  <!--NAV BAR-->
+  <nav class="navbar navbar-dark bg-transparent">
+  <nav class="navbar navbar-expand-lg navbar-warning bg-transparent">
+  <a class="navbar-brand" href="#"><h1 style="color:#7400B8;" >SEED</h1></a>
+  <button class="navbar-toggler" style="color: #000000" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="material-icons">menu</span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#79E460;" href="/home"><b>HOME</b><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>COLLEGES</b></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>BOOKS</b></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>EXAMS</b></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>NEWS</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#79E460;" href="#"><b>COURSES</b></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FF0000;" href="#"><b>QUESTION BANK</b></a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+     <!--text here-->
+    </span>
+  </div>
+</nav>
+</nav>
+
+
+{% for i in viewable %}
+<h1 style="margin-left:300px;">{{i.cquestion}}</h1>
+{% if i.canswer == 1 %}
+<b style="margin-left:300px;">ANSWER: {{i.coption1}}</b>
+<p style="margin-left:300px;">{{i.coption2}}</p>
+<p style="margin-left:300px;">{{i.coption3}}</p>
+<p style="margin-left:300px;">{{i.coption4}}</p>
+{% endif %}
+{% if i.canswer == 2 %}
+<p style="margin-left:300px;">{{i.coption1}}</p>
+<b style="margin-left:300px;">ANSWER: {{i.coption2}}</b>
+<p style="margin-left:300px;">{{i.coption3}}</p>
+<p style="margin-left:300px;">{{i.coption4}}</p>
+{% endif %}
+{% if i.canswer == 3 %}
+<p style="margin-left:300px;">{{i.coption1}}</p>
+<p style="margin-left:300px;">{{i.coption2}}</p>
+<b style="margin-left:300px;">ANSWER: {{i.coption3}}</b>
+<p style="margin-left:300px;">{{i.coption4}}</p>
+{% endif %}
+{% if i.canswer == 4 %}
+<p style="margin-left:300px;">{{i.coption1}}</p>
+<p style="margin-left:300px;">{{i.coption2}}</p>
+<p style="margin-left:300px;">{{i.coption3}}</p>
+<b style="margin-left:300px;">ANSWER: {{i.coption4}}</b>
+{% endif %}
+{% endfor %}
+
+</body>
+<style type="text/css">
+
+body {
+  
+  background-color: #E5E2FF;
+}
+
+/*
+.navbag
+{
+  background-color: #FFFFFF;
+}
+*/
+
+img
+{
+  width:75%;
+  height:20%;
+  border-radius:20%;
+  margin-top: 10%;
+  margin-bottom:50px;
+  margin-left:10%;
+}
+
+.nav-link
+{
+  text-decoration: none;
+  color:white;
+}
+
+main
+{
+  margin-left: 5rem;
+  padding: 1rem;
+}
+
+.navbar
+{
+  position: fixed;
+  background-color:blue;
+  transition: width 600ms ease;
+  overflow: auto;
+}
+
+.nav-item
+{
+  padding:0.5rem;
+}
+
+.nav-item:hover
+{
+  background-color:black;
+  display: inline;
+}
+
+.navlist
+{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+
+ /* NEW NAV CODE */
+ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  background-color: blue;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: black;
+  color: white;
+}
+
+li a:hover:not(.active)
+{
+  background-color: #0095FF;
+  color: white;
+}
+
+.thenavcont
+{
+  margin-left: 15%;
+}
+
+
+</style>
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

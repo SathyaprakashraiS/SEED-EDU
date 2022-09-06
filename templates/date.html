@@ -1,0 +1,378 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>SEED</title>
+  </head>
+  <body>
+  <link rel='stylesheet'  href="{% static 'CSS\master.css' %}">
+  <!--NAV BAR-->
+  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-warning ">
+  <a class="navbar-brand" href="/"><b style="color:#FFFFFF;font-size:140%" >SEED</b></a>
+  <button class="navbar-toggler" style="color: #FFFFFF" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="material-icons">menu</span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#FFFFFF;" href="/"><div class="hovermenu"><span class="material-icons">home</span>
+            <b style="color:#64DFDF;">HOME</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/college"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COLLEGES</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/library"><div class="hovermenu"><span class="material-icons">local_library</span>
+            <b style="color:#64DFDF;">LIBRARY</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/exam"><div class="hovermenu"><span class="material-icons">edit</span>
+            <b style="color:#64DFDF;">EXAMS</b></div></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/news"><div class="hovermenu"><span class="material-icons">newspaper</span>
+            <b style="color:#64DFDF;">NEWS</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/course"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COURSES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/date"><div class="hovermenu"><span class="material-icons">event_note</span>
+            <b style="color:#80FFD8;font-size:110%">DATES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/questionpaper"><div class="hovermenu"><span class="material-icons">savings</span>
+            <b style="color:#64DFDF;">QUESTION BANK</b></div></a>
+      </li>
+      <li>
+        <div class="dropdown">
+            <a class="nav-link" style="color:#FFFFFF;"><div class="hovermenu"><span class="material-icons">more_horiz</span>
+                <b style="color:#64DFDF;">OTHER</b></div></a>
+            <div class="dropdown-content">
+                <a href="/other/FAQ" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">quiz</span>
+                    <b style="color:#64DFDF;">FAQ</b></a>
+                <a href="/other/rnotes" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">preview</span>
+                    <b style="color:#64DFDF;">REVISION NOTES</b></a>
+                <a href="/other/tips" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">tips_and_updates</span>
+                    <b style="color:#64DFDF;">TIPS N TRICKS</b></a>
+                <a href="/other/courses" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">shopping_cart</span>
+                    <b style="color:#64DFDF;">ONLINE COURSE</b></a>
+                <a href="/other/vids" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">video_library</span>
+                    <b style="color:#64DFDF;">VIDEOS</b></a>
+            </div>
+        </div>
+      </li>
+    {% if user.is_authenticated %}
+    {% if user.teacher %}
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/teacher/"><div class="hovermenu"><span class="material-icons">person</span>
+            <b style="color:#64DFDF;">TEACHER PORTAL</b></div></a>
+        </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/student/"><div class="hovermenu"><span class="material-icons">person</span>
+        <b style="color:#64DFDF;">STUD PORTAL</b></div></a>
+    </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% endif %}
+      {% else %}
+        <li class="nav-item">
+            <a class="nav-link"  style="color:#FFFFFF;" href="login/"class="logbutton">
+                <div class="hovermenu"><span class="material-icons">login</span>
+                <b style="color:#64DFDF;">LOGIN / SIGNUP</b>
+                </div>
+            </a>
+        </li>
+      {% endif %}
+        </ul>
+    </div>
+    <span class="navbar-text">
+    </span>
+  </div>
+</nav>
+</nav>
+
+
+<section id="timeline">
+  {% for i in obj %}
+  <article>
+    <div class="inner">
+      <span class="date">
+        <span class="day" style="color:#FFFFFF;">{{i.Date}}</span>
+      </span>
+      <h2 class="ename">{{i.event_name}}</h2>
+      <p>{{i.desc}}</p>
+    </div>
+  </article>
+{% endfor %}
+</section>
+
+
+</body>
+<style type="text/css">
+body {
+  /*background: #25303B;*/
+  background-color: #80FFDB;
+}
+section#timeline {
+  width: 80%;
+  margin: 20px auto;
+  position: relative;
+}
+section#timeline:before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin: 0 0 0 -1px;
+  width: 2px;
+  height: 100%;
+  background: #000000;/* rgba(255,255,255,0.2) previous color  */
+}
+section#timeline article {
+  width: 100%;
+  margin: 0 0 20px 0;
+  position: relative;
+}
+section#timeline article:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+section#timeline article div.inner {
+  width: 40%;
+  float: left;
+  margin: 5px 0 0 0;
+  border-radius: 6px;
+}
+section#timeline article div.inner span.date {
+  display: block;
+  width: 60px;
+  height: 50px;
+  padding: 5px 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin: 0 0 0 -32px;
+  border-radius: 100%;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  background: #25303B;
+  color: rgba(255,255,255,0.5);
+  border: 2px solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 0 7px #25303B;
+}
+section#timeline article div.inner span.date span {
+  display: block;
+  text-align: center;
+}
+section#timeline article div.inner span.date span.day {
+  font-size: 10px;
+}
+section#timeline article div.inner span.date span.month {
+  font-size: 18px;
+}
+section#timeline article div.inner span.date span.year {
+  font-size: 10px;
+}
+section#timeline article div.inner h2 {
+  padding: 15px;
+  margin: 0;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  border-radius: 6px 6px 0 0;
+  position: relative;
+}
+section#timeline article div.inner h2:after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -5px;
+    width: 10px; 
+    height: 10px;
+  -webkit-transform: rotate(-45deg);
+}
+section#timeline article div.inner p {
+  padding: 15px;
+  margin: 0;
+  font-size: 14px;
+  background: #d3e0e2;
+  color: #000000;
+  border-radius: 0 0 6px 6px;
+}
+section#timeline article:nth-child(2n+2) div.inner {
+  float: right;
+}
+section#timeline article:nth-child(2n+2) div.inner h2:after {
+  left: -5px;
+}
+/* section#timeline article:nth-child(1) div.inner h2 {
+  background: #e74c3c;
+}
+section#timeline article:nth-child(1) div.inner h2:after {
+  background: #e74c3c;
+}
+section#timeline article:nth-child(2) div.inner h2 {
+  background: #2ecc71;
+}
+section#timeline article:nth-child(2) div.inner h2:after {
+  background: #2ecc71;
+}
+section#timeline article:nth-child(3) div.inner h2 {
+  background: #e67e22;
+}
+section#timeline article:nth-child(3) div.inner h2:after {
+  background: #e67e22;
+}
+section#timeline article:nth-child(4) div.inner h2 {
+  background: #1abc9c;
+}
+section#timeline article:nth-child(4) div.inner h2:after {
+  background: #1abc9c;
+}
+section#timeline article:nth-child(5) div.inner h2 {
+  background: #9b59b6;
+}
+section#timeline article:nth-child(5) div.inner h2:after {
+  background: #9b59b6;
+} */
+
+.dropbtn {
+  /*background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;*/
+  background-color: #80FFD8;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10%;
+  width: auto;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #7400B8;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #80FFd8;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #4EA8DE;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #80FFD8;}
+
+.navbar-custom{
+    /*background-color: #80FFD8;*/
+    background-color: #7400B8;
+}
+.hovermenu {
+  position: relative;
+}
+.hovermenu:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #fff;
+  height: 3px;
+}
+.hovermenu:hover:after {
+  width: 100%;
+}
+</style>
+
+
+<script>
+  ename = document.querySelectorAll(".ename")
+  console.log("hello")
+  console.log(ename.length)
+
+  for(let i in ename){
+    ename[i].style.background = randomColor()
+  }
+
+  function randomColor() { return '#'+(Math.random()*0xEEEEEE<<0).toString(16); }
+  
+  // function randomColor() {
+  //   var x = Math.floor(Math.random() * 256);
+  //   var y = 100+ Math.floor(Math.random() * 256);
+  //   var z = 50+ Math.floor(Math.random() * 256);
+  //   var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+ 	// console.log(bgColor);
+  
+  //   return bgColor
+  //   }
+</script>
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

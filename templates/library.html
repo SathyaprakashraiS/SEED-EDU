@@ -1,0 +1,534 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>SEED</title>
+  </head>
+  <body>
+  <link rel='stylesheet'  href="{% static 'CSS\master.css' %}">
+  <!--NAV BAR-->
+  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-warning ">
+  <a class="navbar-brand" href="/"><b style="color:#FFFFFF;font-size:140%" >SEED</b></a>
+  <button class="navbar-toggler" style="color: #FFFFFF" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="material-icons">menu</span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#FFFFFF;" href="/"><div class="hovermenu"><span class="material-icons">home</span>
+            <b style="color:#64DFDF;">HOME</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/college"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COLLEGES</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/library"><div class="hovermenu"><span class="material-icons">local_library</span>
+            <b style="color:#80FFD8;font-size:110%">LIBRARY</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/exam"><div class="hovermenu"><span class="material-icons">edit</span>
+            <b style="color:#64DFDF;">EXAMS</b></div></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/news"><div class="hovermenu"><span class="material-icons">newspaper</span>
+            <b style="color:#64DFDF;">NEWS</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/course"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COURSES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/date"><div class="hovermenu"><span class="material-icons">event_note</span>
+            <b style="color:#64DFDF;">DATES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/questionpaper"><div class="hovermenu"><span class="material-icons">savings</span>
+            <b style="color:#64DFDF;">QUESTION BANK</b></div></a>
+      </li>
+      <li>
+        <div class="dropdown">
+            <a class="nav-link" style="color:#FFFFFF;"><div class="hovermenu"><span class="material-icons">more_horiz</span>
+                <b style="color:#64DFDF;">OTHER</b></div></a>
+            <div class="dropdown-content">
+                <a href="/other/FAQ" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">quiz</span>
+                    <b style="color:#64DFDF;">FAQ</b></a>
+                <a href="/other/rnotes" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">preview</span>
+                    <b style="color:#64DFDF;">REVISION NOTES</b></a>
+                <a href="/other/tips" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">tips_and_updates</span>
+                    <b style="color:#64DFDF;">TIPS N TRICKS</b></a>
+                <a href="/other/courses" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">shopping_cart</span>
+                    <b style="color:#64DFDF;">ONLINE COURSE</b></a>
+                <a href="/other/vids" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">video_library</span>
+                    <b style="color:#64DFDF;">VIDEOS</b></a>
+            </div>
+        </div>
+      </li>
+    {% if user.is_authenticated %}
+    {% if user.teacher %}
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/teacher/"><div class="hovermenu"><span class="material-icons">person</span>
+            <b style="color:#64DFDF;">TEACHER PORTAL</b></div></a>
+        </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/student/"><div class="hovermenu"><span class="material-icons">person</span>
+        <b style="color:#64DFDF;">STUD PORTAL</b></div></a>
+    </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% endif %}
+      {% else %}
+        <li class="nav-item">
+            <a class="nav-link"  style="color:#FFFFFF;" href="login/"class="logbutton">
+                <div class="hovermenu"><span class="material-icons">login</span>
+                <b style="color:#64DFDF;">LOGIN / SIGNUP</b>
+                </div>
+            </a>
+        </li>
+      {% endif %}
+        </ul>
+    </div>
+    <span class="navbar-text">
+    </span>
+  </div>
+</nav>
+</nav>
+
+<div class="pagetitle">
+<h1 style="text-align:center;"><b>ALL BOOKS AVAILABLE</b></h1>
+</div>
+
+<!-- 'https://raw.githubusercontent.com/Poojavpatel/BookStoreApp/master/img/jungle.jpg' -->
+<div class="cards-list">
+  {% for i in obj %}
+<div class="book">
+          <div class="bookpic"><img class="imgas" src="{{i.image.url}}" alt=""></div>
+          <div class="bookinfo">
+            <div class="title"><b>{{i.name}}</b></div>
+            <div class="author">{{i.author}}</div>
+            <div class="author">{{i.bgrade}}</div>
+            <div class="stars"></div>
+            <ul class="controls">
+              <li class="control">
+                <a href="{{i.file.url}}" style="color:#3CB371;" download>
+                  <span class="material-icons">file_download</span>
+                </a>
+              </li>
+              
+              <li class="control">
+                <a href="{{i.file.url}}" style="color:#3CB371;">
+                  <span class="material-icons">auto_stories</span>
+                </a>
+              </li>
+              <!-- <li class="control">
+                <a href="{{i.file.url}}" download>
+                  <svg class="icon icon--2x"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#download">
+                  <span class="invisible">Home</span>
+                </a>
+              </li>
+              <li class="control">
+                <a href="{{i.file.url}}">
+                  <svg class="icon icon--2x"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#edit">
+                  <span class="invisible">Search</span>
+                </a>
+              </li>
+              <li class="control deletebutton">
+                <a href="#">
+                  <svg class="icon icon--2x deletesvg"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#delete">
+                  <span class="invisible">Products</span>
+                </a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+{% endfor %}
+</div>
+
+<!-- svg Data -->
+<svg xmlns="http://www.w3.org/2000/svg" class="icons">
+    <symbol id="download" viewBox="0 0 24 24"><path d="M21 14c-0.6 0-1 0.4-1 1v4c0 0.6-0.4 1-1 1h-14c-0.6 0-1-0.4-1-1v-4c0-0.6-0.4-1-1-1s-1 0.4-1 1v4c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3v-4c0-0.6-0.4-1-1-1z"></path>
+    <path d="M11.3 15.7c0.1 0.1 0.2 0.2 0.3 0.2 0.1 0.1 0.3 0.1 0.4 0.1s0.3 0 0.4-0.1c0.1-0.1 0.2-0.1 0.3-0.2l5-5c0.4-0.4 0.4-1 0-1.4s-1-0.4-1.4 0l-3.3 3.3v-9.6c0-0.6-0.4-1-1-1s-1 0.4-1 1v9.6l-3.3-3.3c-0.4-0.4-1-0.4-1.4 0s-0.4 1 0 1.4l5 5z"></path></symbol>
+    <symbol id="delete" viewBox="0 0 24 24"><path d="M21 5h-4v-1c0-1.7-1.3-3-3-3h-4c-1.7 0-3 1.3-3 3v1h-4c-0.6 0-1 0.4-1 1s0.4 1 1 1h1v13c0 1.7 1.3 3 3 3h10c1.7 0 3-1.3 3-3v-13h1c0.6 0 1-0.4 1-1s-0.4-1-1-1zM9 4c0-0.6 0.4-1 1-1h4c0.6 0 1 0.4 1 1v1h-6v-1zM18 20c0 0.6-0.4 1-1 1h-10c-0.6 0-1-0.4-1-1v-13h12v13z"></path>
+    <path d="M10 10c-0.6 0-1 0.4-1 1v6c0 0.6 0.4 1 1 1s1-0.4 1-1v-6c0-0.6-0.4-1-1-1z"></path>
+    <path d="M14 10c-0.6 0-1 0.4-1 1v6c0 0.6 0.4 1 1 1s1-0.4 1-1v-6c0-0.6-0.4-1-1-1z"></path></symbol>
+    <symbol id="edit" viewBox="0 0 24 24"><path d="M20 13.7c-0.6 0-1 0.4-1 1v5.3c0 0.6-0.4 1-1 1h-14c-0.6 0-1-0.4-1-1v-14c0-0.6 0.4-1 1-1h5.3c0.6 0 1-0.4 1-1s-0.4-1-1-1h-5.3c-1.7 0-3 1.3-3 3v14c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3v-5.3c0-0.6-0.4-1-1-1z"></path>
+    <path d="M22.7 5.3l-4-4c-0.4-0.4-1-0.4-1.4 0l-10 10c-0.2 0.2-0.3 0.4-0.3 0.7v4c0 0.6 0.4 1 1 1h4c0.3 0 0.5-0.1 0.7-0.3l10-10c0.4-0.4 0.4-1 0-1.4zM11.6 15h-2.6v-2.6l9-9 2.6 2.6-9 9z"></path></symbol>
+</svg>
+
+
+
+<!-- <div class="cards-list">
+{% for i in obj %}
+  <div class="card 1">
+    <form id="form-id" method="post" action="/student/book/">
+    {% csrf_token %}
+      <p><b>Book Name: </b>{{i.name}}</p>
+      <input type="hidden" name="bookkey" value="{{i.pk}}"/></p>
+      <p><b>Grade: </b>{{i.bgrade}}</p>-->
+      <!-- <p><b>{{i.review}}</b></p>
+      <p><b>{{i.rating}}</b></p> -->
+      <!-- <button id="bt" type="submit">Read</button>
+      </form> 
+  </div>
+{% endfor %}
+</div> --> 
+
+</body>
+<style type="text/css">
+body
+{
+  /*font-family: 'Aldrich';
+  background: #000000;*/
+  background-color: #80FFD8;
+}
+.imgas{
+  max-width: 100%;
+  height: 300px;
+}
+h1,h2{
+    margin: 0;
+}
+.bookontainer{
+  display:flex;
+}
+.book{
+  margin-left:2%;
+  margin-right:2%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  width: 25%;
+  height: 300px;
+    /*flex-basis: 30%;*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* overflow: hidden; */
+   /* margin-bottom: 5%;*/
+    border-radius: 1%;
+    background:rgb(246, 246, 246);
+}
+.bookpic{
+    flex-basis: 50%;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+.book img{
+    width: 100%;
+}
+.bookinfo *{
+    margin: 0;
+    padding: 0;
+}
+.bookinfo{
+    flex-basis: 50%;
+    padding: 10% 5%;
+}
+.bookinfo .title{
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 5%;
+    color: #5a5a5a;
+}
+.bookinfo .author{
+    font-size: 1.03rem;
+    color: #ececec;
+    color:#8a8a8a;
+    font-style: normal;
+}
+.book{
+    box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+}
+/* controls */
+.bookinfo{
+    position: relative;
+}
+ul.controls{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+ul.controls li{
+    color:red;
+    text-decoration: none;
+    cursor: pointer;
+    list-style: none;
+    flex-basis: 33%;
+    flex-grow: 1;
+    display: flex;
+}
+.controls a{
+    display: block;
+    position: relative;
+    text-decoration: none;
+    margin: auto;
+    padding: 1rem 1rem;
+}
+.controls a::after{
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .3);
+    transition: opacity 0.3s ease;    
+}
+.controls a:hover::after{
+    opacity: 1;
+}
+svg{
+    max-width: 100%;
+}
+.icon--2x {
+    font-size: 2rem;
+}
+svg.icon{
+    display: inline-block;
+    font-size: 1rem;
+    height: 1em;
+    vertical-align: middle;
+    width: 1em;
+    fill: #24b15e;
+    font-size: 1.4rem;
+    opacity: 0.9;
+    transition:opacity 0.3s ease;
+}
+.controls a:hover svg.icon {
+    opacity: 1;
+}
+svg.deletesvg{
+    fill: #e34a4a;
+}
+.invisible {
+    left: -999px;
+    overflow: hidden;
+    position: absolute;
+    top: -999px;
+}
+.deleteme{
+    animation:deleteanimation 1.5s cubic-bezier(0.55, -0.04, 0.91, 0.94) forwards;
+    transform-origin: 100% 0%;
+}
+@keyframes deleteanimation {
+    0% {
+        opacity: 1;
+        transform: rotateZ(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(600px) rotateZ(-90deg);
+    }
+}
+.hideme{
+    display: none;
+}
+
+
+
+
+.pagetitle{
+  margin-top: 1%;
+}
+
+#carousel
+{
+  padding:30px;
+}
+#menu
+{
+  position: absolute;
+  top:20px;
+  right: 0px;
+}
+.container
+{
+  padding-top: 20px;
+  padding-right: 5px;
+  padding-bottom: 20px;
+  padding-left: 200px;
+}
+.responsive
+{
+  width:100%;
+  height:700px;
+}
+
+.cards-list
+{
+  z-index: 0;
+  width: 100%;
+  padding-left: 2%;
+  padding-right: 2%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.card
+{
+  margin: 30px;
+  width: 250px;
+  height: 250px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+  background-color:#0100FC;
+}
+.card .card_image
+{
+  width:100%;
+  height:100%;
+  border-radius: 40px;
+}
+.card .card_image img
+{
+  width:100%;
+  height:100%;
+  border-radius: 40px;
+  object-fit: cover;
+}
+.card .card_title
+{
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 190%;
+  margin-top: -80px;
+  height: 40px;
+}
+.card:hover
+{
+  transform: scale(1.05,1.05);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),-5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+.title-white
+{
+  color: white;
+}
+.title-black
+{
+  color: black;
+}
+
+
+
+
+.dropbtn {
+  /*background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;*/
+  background-color: #80FFD8;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10%;
+  width: auto;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #7400B8;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #80FFd8;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #4EA8DE;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #80FFD8;}
+
+.navbar-custom{
+    /*background-color: #80FFD8;*/
+    background-color: #7400B8;
+}
+.hovermenu {
+  position: relative;
+}
+.hovermenu:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #fff;
+  height: 3px;
+}
+.hovermenu:hover:after {
+  width: 100%;
+}
+</style>
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>

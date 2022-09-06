@@ -1,0 +1,335 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>SEED</title>
+  </head>
+  <body>
+  <link rel='stylesheet'  href="{% static 'CSS\master.css' %}">
+  <!--NAV BAR-->
+  <nav class="navbar navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-warning ">
+  <a class="navbar-brand" href="/"><b style="color:#FFFFFF;font-size:140%" >SEED</b></a>
+  <button class="navbar-toggler" style="color: #FFFFFF" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="material-icons">menu</span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" style="color:#FFFFFF;" href="/"><div class="hovermenu"><span class="material-icons">home</span>
+            <b style="color:#64DFDF;">HOME</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/college"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#80FFD8;font-size:110%">COLLEGES</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/library"><div class="hovermenu"><span class="material-icons">local_library</span>
+            <b style="color:#64DFDF;">LIBRARY</b></div></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" style="color:#FFFFFF;" href="/exam"><div class="hovermenu"><span class="material-icons">edit</span>
+            <b style="color:#64DFDF;">EXAMS</b></div></a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/news"><div class="hovermenu"><span class="material-icons">newspaper</span>
+            <b style="color:#64DFDF;">NEWS</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/course"><div class="hovermenu"><span class="material-icons">school</span>
+            <b style="color:#64DFDF;">COURSES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/date"><div class="hovermenu"><span class="material-icons">event_note</span>
+            <b style="color:#64DFDF;">DATES</b></div></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/questionpaper"><div class="hovermenu"><span class="material-icons">savings</span>
+            <b style="color:#64DFDF;">QUESTION BANK</b></div></a>
+      </li>
+      <li>
+        <div class="dropdown">
+            <a class="nav-link" style="color:#FFFFFF;"><div class="hovermenu"><span class="material-icons">more_horiz</span>
+                <b style="color:#64DFDF;">OTHER</b></div></a>
+            <div class="dropdown-content">
+                <a href="/other/FAQ" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">quiz</span>
+                    <b style="color:#64DFDF;">FAQ</b></a>
+                <a href="/other/rnotes" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">preview</span>
+                    <b style="color:#64DFDF;">REVISION NOTES</b></a>
+                <a href="/other/tips" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">tips_and_updates</span>
+                    <b style="color:#64DFDF;">TIPS N TRICKS</b></a>
+                <a href="/other/courses" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">shopping_cart</span>
+                    <b style="color:#64DFDF;">ONLINE COURSE</b></a>
+                <a href="/other/vids" style="font-size:90%;color:#FFFFFF;"><span class="material-icons">video_library</span>
+                    <b style="color:#64DFDF;">VIDEOS</b></a>
+            </div>
+        </div>
+      </li>
+    {% if user.is_authenticated %}
+    {% if user.teacher %}
+        <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/teacher/"><div class="hovermenu"><span class="material-icons">person</span>
+            <b style="color:#64DFDF;">TEACHER PORTAL</b></div></a>
+        </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link" style="color:#FFFFFF;" href="/student/"><div class="hovermenu"><span class="material-icons">person</span>
+        <b style="color:#64DFDF;">STUD PORTAL</b></div></a>
+    </li>
+    <li>
+        <div class="dropdown">
+            <button class="dropbtn" style="color:#000000;">{{request.user.username}}</button>
+            <div class="dropdown-content">
+                <a href="/edit" style="color:#FFFFFF;"><span class="material-icons">brush</span>
+                    <b style="color:#64DFDF;font-size:90%;">EDIT PROFILE</b></a>
+                <a href="/view" style="color:#FFFFFF;"><span class="material-icons">visibility</span>
+                    <b style="color:#64DFDF;font-size:90%;">VIEW PROFILE</b></a>
+            </div>
+        </div>
+    </li>
+    {% endif %}
+      {% else %}
+        <li class="nav-item">
+            <a class="nav-link"  style="color:#FFFFFF;" href="login/"class="logbutton">
+                <div class="hovermenu"><span class="material-icons">login</span>
+                <b style="color:#64DFDF;">LOGIN / SIGNUP</b>
+                </div>
+            </a>
+        </li>
+      {% endif %}
+        </ul>
+    </div>
+    <span class="navbar-text">
+    </span>
+  </div>
+</nav>
+</nav>
+
+<p style="color:#000000;text-align:center;font-size:200%;margin-top:1%;"><b>DIFFERENT COLLEGE TYPES IN INDIA</b></p>
+<div class="container">
+  <div class="card-box">
+    <div class="card-img">
+      <a href="allcolleges"><img src="https://images.shiksha.com/mediadata/images/1490072168phpQ9v9PO_g.jpg" alt="">
+    </div></a>
+    <div class="card-content">
+      <span><a href="allcolleges" style="font-size:150%;color:#FFFFFF;text-align:center;">ALL COLLEGES</a></span>
+    </div>
+  </div>
+
+  <div class="card-box">
+    <div class="card-img">
+      <a href="topcolleges"><img src="https://www.businessbecause.com/uploads/default/news/images/1566911208.png" alt="">
+    </div></a>
+    <div class="card-content">
+      <span><a href="topcolleges" style="font-size:150%;color:#FFFFFF;text-align:center;">TOP COLLEGES</a></span>
+    </div>
+  </div>
+
+  <div class="card-box">
+    <div class="card-img">
+      <a href="degreebasedcolleges"><img src="https://printabletemplates.com/wp-content/uploads/2017/12/graduation-certificate-12.jpg" alt=""></a>
+    </div>
+    <div class="card-content">
+      <span><a href="degreebasedcolleges" style="font-size:150%;color:#FFFFFF;text-align:center;">DEGREE BASED COLLEGES</a></span>
+    </div>
+  </div>
+
+  <div class="card-box">
+    <div class="card-img">
+      <a href="statebasedcolleges"><img src="https://elements-video-cover-images-0.imgix.net/files/208091192/India+Map+Preview+590x332.jpg?auto=compress&crop=edges&fit=crop&fm=jpeg&h=800&w=1200&s=620bc62ed3e6a929dbe0ebe33836db03" alt=""></a>
+    </div>
+    <div class="card-content">
+      <span><a href="statebasedcolleges" style="font-size:150%;color:#FFFFFF;text-align:center;">STATE WISE COLLEGES</a></span>
+    </div>
+  </div>
+
+  <div class="card-box">
+    <div class="card-img">
+      <a href="citybasedcolleges"><img src="https://www.cioandleader.com/sites/default/files/styles/article_image/public/CITY.jpg?itok=nJT8stE0" alt=""></a>
+    </div>
+    <div class="card-content">
+      <span><a href="citybasedcolleges" style="font-size:150%;color:#FFFFFF;text-align:center;">NOTICABLE CITY WITH BEST COLLEGES</a></span>
+    </div>
+  </div>
+
+  <div class="card-box">
+    <div class="card-img">
+      <a href="coursebasedcolleges"><img src="https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""></a>
+    </div>
+    <div class="card-content">
+      <span><a href="coursebasedcolleges" style="font-size:150%;color:#FFFFFF;text-align:center;">COURSE BASED COLLEGES</a></span>
+    </div>
+  </div>
+</div>
+
+</body>
+<style type="text/css">
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /*font-family: 'Aldrich';*/
+  background: #80FFD8;
+}
+.container {
+  margin-top: 3%;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 5%;
+}
+.card-box {
+  width: 320px;
+  /*background: #79E460;*/
+  background-color: #4EA8DE;
+  border-radius: 7px;
+  border:5px solid darkblue;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
+}
+a {
+  text-decoration: none;
+  color: #848b8c;
+}
+.card-box .card-img {
+  width: calc(100% - 0.8rem);
+  height: 300px;
+  margin: auto;
+  margin-top: 5px;
+  overflow: hidden;
+  transition: 0.2s;
+  transition-delay:.1s;
+  box-shadow: 2px 4px 11px rgba(0, 0, 0, 0.6);
+}
+.card-box:hover
+{
+  transform: scale(1.05,1.05);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),-5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+.card-content {
+  /*padding: 0.7rem 2rem 3rem 2rem;*/
+  font-size:200%;
+  color:#FFFFFF;
+  text-align:center;
+  padding-bottom: 5px;
+}
+.card-box span {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: blue;
+  font-weight: bold;
+}
+
+.card-box p a {
+  font-size: 0.8rem;
+}
+
+.dropbtn {
+  /*background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;*/
+  background-color: #80FFD8;
+  color: white;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10%;
+  width: auto;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #7400B8;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #80FFd8;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #4EA8DE;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #80FFD8;}
+
+.navbar-custom{
+    /*background-color: #80FFD8;*/
+    background-color: #7400B8;
+}
+.hovermenu {
+  position: relative;
+}
+.hovermenu:after{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: #fff;
+  height: 3px;
+}
+.hovermenu:hover:after {
+  width: 100%;
+}
+</style>
+
+   <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
