@@ -762,7 +762,15 @@ def Tcreatechatcommunity(request):
 		return Response(serializer.errors)
 
 @api_view(['GET'])
-def Aallchatcommunitylist(request,grd):
-	commslist=Community.objects.all().filter(comgrade=grd)
+def Aallchatcommunitylist(request):
+	commslist=Community.objects.all().filter(visibility=True)
+	#commslist=Community.objects.all().filter(comgrade=grd)
 	serializer = ChatcommunitiesSerializer(commslist,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Sviewmessages(request,pid):
+	msgs=Chat.objects.all().filter(communitytype=int(pid),visibility=True)
+	print(pid,type(pid))
+	serializer = ChatmessagesSerializer(msgs,many=True)
 	return Response(serializer.data)
