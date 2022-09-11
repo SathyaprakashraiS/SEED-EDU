@@ -13,6 +13,8 @@ from teacher.models import *
 from quespaper.models import *
 from date.models import *
 from other.models import *
+from community.models import *
+
 #from django.contrib.main.custom import User
 
 class BookSerializer(serializers.ModelSerializer):
@@ -155,3 +157,13 @@ class AttMockSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = MockAnswer
 		fields ='__all__'
+
+class ChatcommunitiesSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Community
+		fields='__all__'
+
+class ChatmessagesSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Chat
+		fields='__all__'

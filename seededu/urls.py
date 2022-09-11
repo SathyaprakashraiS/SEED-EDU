@@ -31,7 +31,8 @@ urlpatterns = [
     path('questionpaper/',include("quespaper.urls")),
     path('student/',include("student.urls")),
     path('teacher/',include("teacher.urls")),
-    path('other/',include("other.urls"))
+    path('other/',include("other.urls")),
+    path('community/',include("community.urls"))
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -16,7 +16,6 @@ from rest_auth.registration.views import SocialLoginView
 #from django.contrib.auth.models import User
 
 
-
 user = settings.AUTH_USER_MODEL
 #Create your views here.
 
@@ -741,3 +740,29 @@ def Tpostocoursedata(request,pid):
 	else:
 		print(serializer.errors)
 		return Response(serializer.errors)
+
+@api_view(['POST'])
+def Ssendmessage(request):
+	serializer = ChatmessagesSerializer(data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		return Response(serializer.data)
+	else:
+		return Response(serializer.errors)
+
+@api_view(['POST'])
+def Tcreatechatcommunity(request):
+	serializer = ChatcommunitiesSerializer(data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		#chatcomms=AddquestionT.objects.all().filter(testgrade=bid)
+		#serializer = QuizansSerializer(quizques,many=True)
+		return Response(serializer.data)
+	else:
+		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Aallchatcommunitylist(request,grd):
+	commslist=Community.objects.all().filter(comgrade=grd)
+	serializer = ChatcommunitiesSerializer(commslist,many=True)
+	return Response(serializer.data)

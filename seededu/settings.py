@@ -62,6 +62,7 @@ INSTALLED_APPS = [
     'quespaper', 
     'teacher',
     'student',
+    'community',
     'rest_framework',
     'rest_auth',
     'rest_auth.registration',

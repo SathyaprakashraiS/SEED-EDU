@@ -95,5 +95,7 @@ path("Tpostupdatedquizdata/<str:pid>/",views.Tpostquizdata,name="postupdatedquiz
 path("Tupdatequizquesdata/<str:pid>/",views.Tupdquizquesdata,name="quizquesupdatedata-api"),
 path("Tpostupdatedquizquesdata/<str:pid>/",views.Tpostquizquesdata,name="postupdatedquizquesdata-api"),
 path("Tupdateocoursedata/<str:pid>/",views.Tupdocoursedata,name="ocourseupdatedata-api"),
-path("Tpostupdatedocoursedata/<str:pid>/",views.Tpostocoursedata,name="postupdatedocoursedata-api")
+path("Tpostupdatedocoursedata/<str:pid>/",views.Tpostocoursedata,name="postupdatedocoursedata-api"),
+path("Tviewchatcomm/<str:grd>",views.Aallchatcommunitylist,name="chatgrouplist-api"),
+path("Tcreatechatcomm/",views.Tcreatechatcommunity,name="createanewchatgroup-api")
 ]
