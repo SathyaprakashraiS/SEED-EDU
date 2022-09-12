@@ -769,6 +769,13 @@ def Aallchatcommunitylist(request):
 	return Response(serializer.data)
 
 @api_view(['GET'])
+def Agradechatcommunitylist(request,pid):
+	commslist=Community.objects.all().filter(visibility=True,pk__exact=pid)
+	#commslist=Community.objects.all().filter(comgrade=grd)
+	serializer = ChatcommunitiesSerializer(commslist,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
 def Sviewmessages(request,pid):
 	msgs=Chat.objects.all().filter(communitytype=int(pid),visibility=True)
 	print(pid,type(pid))
