@@ -20,6 +20,9 @@ class CustomUser(AbstractUser):
     standard=models.IntegerField(default=10)
     hide=models.BooleanField(default=False)
     img=models.ImageField(upload_to='images',default='images/profpic.jpeg')
+    advertise=models.BooleanField(default=False)
+    needassist=models.BooleanField(default=False)
+    resume=models.FileField(default="images/default.pdf")
 
 class Dialogues(models.Model):
 	thought=models.CharField(max_length=250)
