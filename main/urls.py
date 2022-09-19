@@ -100,5 +100,7 @@ path("Tviewchatcomm/",views.Aallchatcommunitylist,name="chatgrouplist-api"),
 path("Sviewchatcomm/<str:pid>/",views.Agradechatcommunitylist,name="standardchatgrouplist-api"),
 path("Tcreatechatcomm/",views.Tcreatechatcommunity,name="createanewchatgroup-api"),
 path("Tsendchatcomm/",views.Ssendmessage,name="sendchattogroup-api"),
-path("Aviewchatcomm/<str:pid>/",views.Sviewmessages,name="viewchatmsgs-api")
+path("Aviewchatcomm/<str:pid>/",views.Sviewmessages,name="viewchatmsgs-api"),
+path("viewprofile/<str:ml>",views.Profdetails,name="viewprofile-api"),
+path("updateprofile/<str:pml>",views.Updateprofdetails,name="updateprofile-api")
 ]

@@ -13,7 +13,7 @@ from date.models import *
 from course.models import *
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 
 user = settings.AUTH_USER_MODEL
@@ -781,3 +781,22 @@ def Sviewmessages(request,pid):
 	print(pid,type(pid))
 	serializer = ChatmessagesSerializer(msgs,many=True)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def Profdetails(request,ml):
+	profdetails=CustomUser.objects.all().filter(email=ml)
+	serializer = UserSerializer(profdetails,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Updateprofdetails(request,pml):
+	user=CustomUser.objects.get(email=pml)
+	print(user)
+	serializer = UserSerializer(instance=user,data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		print("Saved")
+		return Response(serializer.data)
+	else:
+		print("not saved",serializer.errors)
+		return Response(serializer.errors)

@@ -15,7 +15,7 @@ User = settings.AUTH_USER_MODEL
 
 class CustomUser(AbstractUser):
     teacher=models.BooleanField(default=False)
-    status=models.CharField(max_length=25,default='Studying...') 
+    status=models.CharField(max_length=250,default='Studying...') 
     remark=models.CharField(max_length=100,default='NA')
     standard=models.IntegerField(default=10)
     hide=models.BooleanField(default=False)
