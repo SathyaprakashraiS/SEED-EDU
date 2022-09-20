@@ -214,12 +214,14 @@ DEBUG = True
 
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+#STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+#MEDIA_URL = "/media/"
+#MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 #UNCOMMENT THIS TO RUN USING CLOUD MEDIA FILES
 #NEW CREDENTIALS
+DEFAULT_FILE_STORAGE = 'seededu.custom_azure.AzureMediaStorage'
 #STATIC_LOCATION = "static"
 MEDIA_LOCATION = "media"
 AZURE_ACCOUNT_NAME = "seededu"

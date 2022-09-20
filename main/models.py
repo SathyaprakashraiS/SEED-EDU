@@ -15,6 +15,7 @@ User = settings.AUTH_USER_MODEL
 
 class CustomUser(AbstractUser):
     teacher=models.BooleanField(default=False)
+    upgreq=models.BooleanField(default=False)
     status=models.CharField(max_length=250,default='Studying...') 
     remark=models.CharField(max_length=100,default='NA')
     standard=models.IntegerField(default=10)
@@ -23,6 +24,7 @@ class CustomUser(AbstractUser):
     advertise=models.BooleanField(default=False)
     needassist=models.BooleanField(default=False)
     resume=models.FileField(default="images/default.pdf")
+    contactnumber=models.CharField(default="9876543210",max_length=13)
 
 class Dialogues(models.Model):
 	thought=models.CharField(max_length=250)

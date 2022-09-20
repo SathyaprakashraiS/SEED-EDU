@@ -35,3 +35,9 @@ class Notes(models.Model):
 	thumbnail=models.ImageField(upload_to='images',default='images/tst2.jpg')
 	grade=models.IntegerField(default=10,validators=[MaxValueValidator(12), MinValueValidator(10)])
 	file=models.FileField(upload_to='images',default="images/default.pdf")
+
+class Helpline(models.Model):
+	img=models.ImageField(upload_to='images',default='images/tst2.jpg')
+	contactname=models.CharField(max_length=100)
+	contactnumber=models.CharField(max_length=20)
+	brief=models.CharField(max_length=1000)
