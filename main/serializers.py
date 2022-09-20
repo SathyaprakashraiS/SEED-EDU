@@ -167,3 +167,8 @@ class ChatmessagesSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=Chat
 		fields='__all__'
+
+class HelplineSeriailzer(serializers.ModelSerializer):
+	class Meta:
+		model=Helpline
+		fields='__all__'

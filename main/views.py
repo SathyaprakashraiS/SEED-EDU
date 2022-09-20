@@ -11,6 +11,7 @@ from quespaper.models import *
 from .serializers import *
 from date.models import *
 from course.models import *
+from other.models import *
 from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
 from django.contrib.auth.models import User
@@ -800,3 +801,9 @@ def Updateprofdetails(request,pml):
 	else:
 		print("not saved",serializer.errors)
 		return Response(serializer.errors)
+
+@api_view(['GET'])
+def Helplinenumbers(request):
+	nunmbers=Helpline.objects.all()
+	serializer = HelplineSeriailzer(nunmbers,many=True)
+	return Response(serializer.data)

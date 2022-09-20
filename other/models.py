@@ -41,3 +41,4 @@ class Helpline(models.Model):
 	contactname=models.CharField(max_length=100)
 	contactnumber=models.CharField(max_length=20)
 	brief=models.CharField(max_length=1000)
+	mail=models.CharField(max_length=100,default="")
