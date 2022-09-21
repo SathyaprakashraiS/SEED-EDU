@@ -106,5 +106,9 @@ path("updateprofile/<str:pml>",views.Updateprofdetails,name="updateprofile-api")
 path("helplinecontacts/",views.Helplinenumbers,name="helplinenumberslist-api"),
 path("Scompexamlist/<str:grd>",views.Fcompexamlist,name="filteredcompetitiveexamlist-api"),
 path("Tcompexamlist/",views.Compexamlist,name="allcompetitiveexamlist-api"),
-path("Scompexamqueslist/<str:xid>",views.Compexamques,name="questionofcompexamlist-api")
+path("Scompexamqueslist/<str:xid>",views.Compexamques,name="questionofcompexamlist-api"),
+path("Sattendedcompcheck/<str:xid>/<str:mid>",views.Compexattcheck,name="ocmpexamattendedlist-api"),
+path("Scompexattresult/<str:sid>/<str:xid>/<str:mid>/<str:std>/<str:pnt>/<str:crt>/<str:wrng>",views.Compexaddresult,name="ocmpexamattendedlist-api"),
+path("Scompexattresulttempo/<str:sid>/<str:xid>/<str:mid>/<str:std>",views.Compexaddtemporesult,name="ocmpexamattendedtemplist-api"),
+path("comexquestion-list/<str:xid>",views.Compexquestions,name="compexamquestionlist-api"),
 ]

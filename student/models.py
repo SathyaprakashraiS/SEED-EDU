@@ -22,3 +22,14 @@ class MockAnswer(models.Model):
 	evaluated=models.BooleanField(default=False)
 	evaluatedby=models.CharField(default="ADMIN",max_length=1000)
 	tempo=models.IntegerField(default=1)
+
+class Compexamresults(models.Model):
+	sname=models.CharField(max_length=200,default='studentname')
+	semail=models.CharField(max_length=200,default='studentemail')
+	sgrade=models.IntegerField(default=10,validators=[MaxValueValidator(12), MinValueValidator(10)])
+	stest=models.CharField(max_length=200,default='testname')
+	spoint=models.CharField(max_length=200,default='0')
+	crt=models.CharField(max_length=200,default='0')
+	wrong=models.CharField(max_length=200,default='0')
+	sremark=models.CharField(max_length=500,default='remark')
+	writting=models.BooleanField(default=True)

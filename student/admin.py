@@ -4,3 +4,4 @@ from .models import *
 # Register your models here.
 admin.site.register(Qanswersheet)
 admin.site.register(MockAnswer)
+admin.site.register(Compexamresults)

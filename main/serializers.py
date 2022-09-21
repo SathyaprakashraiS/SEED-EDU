@@ -174,11 +174,16 @@ class HelplineSeriailzer(serializers.ModelSerializer):
 		fields='__all__'
 
 class CompetitiveexamSerializer(serializers.ModelSerializer):
-	class Mera:
+	class Meta:
 		model=Addcompexam
 		fields='__all__'
 
 class CexamquestionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=Addcompquestions
+		fields='__all__'
+
+class CexamresultSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=Compexamresults
 		fields='__all__'

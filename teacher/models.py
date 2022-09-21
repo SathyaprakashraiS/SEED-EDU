@@ -65,6 +65,9 @@ class Addcompexam(models.Model):
 	cname=models.CharField(max_length=200,default='competitive exam name')
 	author=models.CharField(max_length=200,default='teacher_name')
 	cgrade=models.IntegerField(default=10,validators=[MaxValueValidator(12), MinValueValidator(10)])
+	totalmarks=models.IntegerField(default=360)
+	negativemarkings=models.BooleanField(default=True)
+	time=models.IntegerField(default=180)
 	visible=models.BooleanField(default=True)
 
 	def __str__(self):

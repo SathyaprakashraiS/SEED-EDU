@@ -835,3 +835,51 @@ def Compexamques(request,xid):
 	compexamques=Addcompquestions.objects.all().filter(testgrade=xid)
 	serializer = CexamquestionSerializer(compexamques,many=True)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def Compexattcheck(request,xid,mid):
+	attnd=Compexamresults.objects.all().filter(semail=mid,stest=xid,writting=False)
+	serializer = CexamresultSerializer(attnd,many=True)
+	return Response(serializer.data)
+
+@api_view(['POST'])
+def Compexaddresult(request,sid,xid,mid,std,pnt,crt,wrng):
+	#attquizans=Qanswersheet.objects.all().filter(semail=key,stest=tid)
+	#serializer = AttquizSerializer(data=request.data)
+	#if serializer.is_valid():
+		#serializer.save()
+	#Qanswersheet.objects.filter(sname=name,stest=theb).update(sname=name,semail=mail,sgrade=standard,stest=theb,spoint=score)
+	Compexamresults.objects.all().filter(semail=mid,stest=xid,writting=True).delete()
+	Compexamresults.objects.create(sname=sid,stest=xid,semail=mid,sgrade=int(std),spoint=pnt,crt=crt,wrong=wrng,writting=False)
+	attnd=Compexamresults.objects.all()
+	serializer = CexamresultSerializer(attnd,many=True)
+	return Response(serializer.data)
+	'''
+	user=Compexamresults.objects.get(email=pml)
+	print(user)
+	serializer = UserSerializer(instance=user,data=request.data)
+	if serializer.is_valid():
+		serializer.save()
+		print("Saved")
+		return Response(serializer.data)
+	else:
+		print("not saved",serializer.errors)
+		return Response(serializer.errors)Aquizresultlist
+	'''
+@api_view(['POST'])
+def Compexaddtemporesult(request,sid,xid,mid,std):
+	#attquizans=Qanswersheet.objects.all().filter(semail=key,stest=tid)
+	#serializer = AttquizSerializer(data=request.data)
+	#if serializer.is_valid():
+		#serializer.save()
+	#Qanswersheet.objects.filter(sname=name,stest=theb).update(sname=name,semail=mail,sgrade=standard,stest=theb,spoint=score)
+	Compexamresults.objects.create(sname=sid,stest=xid,semail=mid,sgrade=int(std))
+	attnd=Compexamresults.objects.all()
+	serializer = CexamresultSerializer(attnd,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Compexquestions(request,xid):
+	questions=Addcompquestions.objects.all().filter(testgrade=xid)
+	serializer = CexamquestionSerializer(questions,many=True)
+	return Response(serializer.data)
