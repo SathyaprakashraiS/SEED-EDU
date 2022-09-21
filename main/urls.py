@@ -111,4 +111,6 @@ path("Sattendedcompcheck/<str:xid>/<str:mid>",views.Compexattcheck,name="ocmpexa
 path("Scompexattresult/<str:sid>/<str:xid>/<str:mid>/<str:std>/<str:pnt>/<str:crt>/<str:wrng>",views.Compexaddresult,name="ocmpexamattendedlist-api"),
 path("Scompexattresulttempo/<str:sid>/<str:xid>/<str:mid>/<str:std>",views.Compexaddtemporesult,name="ocmpexamattendedtemplist-api"),
 path("comexquestion-list/<str:xid>",views.Compexquestions,name="compexamquestionlist-api"),
+path("tutors-list/<str:grd>",views.Tutorslist,name="tutorslist-api"),
+path("Atutors-list/",views.Atutorslist,name="alltutorsonsitelist-api")
 ]

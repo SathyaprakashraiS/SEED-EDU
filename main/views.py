@@ -883,3 +883,15 @@ def Compexquestions(request,xid):
 	questions=Addcompquestions.objects.all().filter(testgrade=xid)
 	serializer = CexamquestionSerializer(questions,many=True)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def Tutorslist(request,grd):
+	tutorlist=CustomUser.objects.all().filter(advertise=True,teacher=True,standard=grd)
+	serializer = UserSerializer(tutorlist,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Atutorslist(request):
+	alltutorlist=CustomUser.objects.all().filter(teacher=True)
+	serializer = UserSerializer(alltutorlist,many=True)
+	return Response(serializer.data)
