@@ -807,3 +807,31 @@ def Helplinenumbers(request):
 	nunmbers=Helpline.objects.all()
 	serializer = HelplineSeriailzer(nunmbers,many=True)
 	return Response(serializer.data)
+
+@api_view(['GET'])
+def Fcompexamlist(request,grd):
+	filtcompexam=Addcompexam.objects.all().filter(cgrade=grd,visible=True)
+	serializer = CompetitiveexamSerializer(filtcompexam,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Compexamlist(request):
+	compexam=Addcompexam.objects.all().filter(visible=True)
+	serializer = CompetitiveexamSerializer(compexam,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Compexamques(request,xid):
+	'''
+	flag=Addcompquestions.objects.all().filter(pk__exact=xid,visible=True)
+	if flag:
+		resquiz=Addcompquestions.objects.all().filter(testgrade=xid)
+		serializer = CexamquestionSerializer(resquiz,many=True)
+		return Response(serializer.data)
+	else:
+		terror="ERROR"
+		return Response(terror)
+	'''
+	compexamques=Addcompquestions.objects.all().filter(testgrade=xid)
+	serializer = CexamquestionSerializer(compexamques,many=True)
+	return Response(serializer.data)

@@ -60,3 +60,29 @@ class Assesedanswer(models.Model):
 #	markobtained=models.CharField(max_length=500,default='0')
 #	totalmarks=models.CharField(max_length=500,default='0')
 #	answersheet=models.FileField(upload_to='images')
+
+class Addcompexam(models.Model):
+	cname=models.CharField(max_length=200,default='competitive exam name')
+	author=models.CharField(max_length=200,default='teacher_name')
+	cgrade=models.IntegerField(default=10,validators=[MaxValueValidator(12), MinValueValidator(10)])
+	visible=models.BooleanField(default=True)
+
+	def __str__(self):
+		return self.cname
+
+class Addcompquestions(models.Model):
+	testgrade=models.ForeignKey(Addcompexam,on_delete=models.CASCADE)
+	cquestion=models.CharField(max_length=500,default='Question')
+	cimg=models.ImageField(upload_to='images',default='images/tst2.jpg')
+	cimgadded=models.BooleanField(default=False)
+	coption1=models.CharField(max_length=500,default='Option1')
+	coption2=models.CharField(max_length=500,default='Option2')
+	coption3=models.CharField(max_length=500,default='Option3')
+	coption4=models.CharField(max_length=500,default='Option4')
+	canswer=models.IntegerField(default=1,validators=[MaxValueValidator(4), MinValueValidator(1)])
+
+	def __str__(self):
+		return self.cquestion
+
+	class Meta:
+		ordering = ['cquestion']

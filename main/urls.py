@@ -103,5 +103,8 @@ path("Tsendchatcomm/",views.Ssendmessage,name="sendchattogroup-api"),
 path("Aviewchatcomm/<str:pid>/",views.Sviewmessages,name="viewchatmsgs-api"),
 path("viewprofile/<str:ml>",views.Profdetails,name="viewprofile-api"),
 path("updateprofile/<str:pml>",views.Updateprofdetails,name="updateprofile-api"),
-path("helplinecontacts/",views.Helplinenumbers,name="ehlplinenumberslist-api")
+path("helplinecontacts/",views.Helplinenumbers,name="helplinenumberslist-api"),
+path("Scompexamlist/<str:grd>",views.Fcompexamlist,name="filteredcompetitiveexamlist-api"),
+path("Tcompexamlist/",views.Compexamlist,name="allcompetitiveexamlist-api"),
+path("Scompexamqueslist/<str:xid>",views.Compexamques,name="questionofcompexamlist-api")
 ]
