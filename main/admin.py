@@ -6,9 +6,9 @@ from .forms import CustomUserForm
 from .models import Dialogues
 
 class CustomUserAdmin(UserAdmin):
-	UserAdmin.list_display += ('teacher','status','remark','standard','img')
-	UserAdmin.list_filter += ('teacher','status','remark','standard','img')
-	UserAdmin.fieldsets += (('teacher', {'fields': ('teacher','status','remark','standard','img')}),) 
+	UserAdmin.list_display += ('teacher','status','remark','standard','img','hide','advertise','needassist','resume','contactnumber')
+	UserAdmin.list_filter += ('teacher','status','remark','standard','img','hide','advertise','needassist','resume','contactnumber')
+	UserAdmin.fieldsets += (('teacher', {'fields': ('teacher','status','remark','standard','img','hide','advertise','needassist','resume','contactnumber')}),) 
   
  
 # Register your models here.

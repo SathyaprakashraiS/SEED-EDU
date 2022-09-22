@@ -809,8 +809,13 @@ def Helplinenumbers(request):
 	return Response(serializer.data)
 
 @api_view(['GET'])
-def Fcompexamlist(request,grd):
+def Fcompexamlist(request,grd,mil):
 	filtcompexam=Addcompexam.objects.all().filter(cgrade=grd,visible=True)
+	attcompexam=Compexamresults.objects.all().filter(semail=mil,sgrade=grd)
+	for i in filtcompexam:
+		for j in attcompexam:
+			if(j.stestname==i.cname):
+				filtcompexam=filtcompexam.exclude(pk=i.id)
 	serializer = CompetitiveexamSerializer(filtcompexam,many=True)
 	return Response(serializer.data)
 
@@ -843,14 +848,14 @@ def Compexattcheck(request,xid,mid):
 	return Response(serializer.data)
 
 @api_view(['POST'])
-def Compexaddresult(request,sid,xid,mid,std,pnt,crt,wrng):
+def Compexaddresult(request,sid,xid,mid,std,pnt,crt,wrng,ename):
 	#attquizans=Qanswersheet.objects.all().filter(semail=key,stest=tid)
 	#serializer = AttquizSerializer(data=request.data)
 	#if serializer.is_valid():
 		#serializer.save()
 	#Qanswersheet.objects.filter(sname=name,stest=theb).update(sname=name,semail=mail,sgrade=standard,stest=theb,spoint=score)
 	Compexamresults.objects.all().filter(semail=mid,stest=xid,writting=True).delete()
-	Compexamresults.objects.create(sname=sid,stest=xid,semail=mid,sgrade=int(std),spoint=pnt,crt=crt,wrong=wrng,writting=False)
+	Compexamresults.objects.create(sname=sid,stest=xid,semail=mid,sgrade=int(std),spoint=pnt,crt=crt,wrong=wrng,writting=False,stestname=ename)
 	attnd=Compexamresults.objects.all()
 	serializer = CexamresultSerializer(attnd,many=True)
 	return Response(serializer.data)
@@ -867,13 +872,13 @@ def Compexaddresult(request,sid,xid,mid,std,pnt,crt,wrng):
 		return Response(serializer.errors)Aquizresultlist
 	'''
 @api_view(['POST'])
-def Compexaddtemporesult(request,sid,xid,mid,std):
+def Compexaddtemporesult(request,sid,xid,mid,std,ename):
 	#attquizans=Qanswersheet.objects.all().filter(semail=key,stest=tid)
 	#serializer = AttquizSerializer(data=request.data)
 	#if serializer.is_valid():
 		#serializer.save()
 	#Qanswersheet.objects.filter(sname=name,stest=theb).update(sname=name,semail=mail,sgrade=standard,stest=theb,spoint=score)
-	Compexamresults.objects.create(sname=sid,stest=xid,semail=mid,sgrade=int(std))
+	Compexamresults.objects.create(sname=sid,stest=xid,semail=mid,sgrade=int(std),stestname=ename)
 	attnd=Compexamresults.objects.all()
 	serializer = CexamresultSerializer(attnd,many=True)
 	return Response(serializer.data)
@@ -894,4 +899,22 @@ def Tutorslist(request,grd):
 def Atutorslist(request):
 	alltutorlist=CustomUser.objects.all().filter(teacher=True)
 	serializer = UserSerializer(alltutorlist,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Tallcompexlist(request):
+	allcompexlist=Addcompexam.objects.all().filter(visible=True)
+	serializer = CompetitiveexamSerializer(allcompexlist,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Compexkeys(request,xid):
+	allcompexanslist=Addcompquestions.objects.all().filter(testgrade=xid)
+	serializer = CexamquestionSerializer(allcompexanslist,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Sattcompex(request,mid):
+	allattcompexanslist=Compexamresults.objects.all().filter(semail=mid)
+	serializer = CexamresultSerializer(allattcompexanslist,many=True)
 	return Response(serializer.data)

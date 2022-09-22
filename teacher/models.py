@@ -89,3 +89,9 @@ class Addcompquestions(models.Model):
 
 	class Meta:
 		ordering = ['cquestion']
+
+class TSmessages(models.Model):
+	sender=models.CharField(max_length=100,default="sender")
+	reciever=models.CharField(max_length=100,default="sender")
+	sendername=models.CharField(max_length=100,default="sendername")
+	message=models.CharField(max_length=10000,default="message")
