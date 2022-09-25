@@ -891,7 +891,7 @@ def Compexquestions(request,xid):
 
 @api_view(['GET'])
 def Tutorslist(request,grd):
-	tutorlist=CustomUser.objects.all().filter(advertise=True,teacher=True,standard=grd)
+	tutorlist=CustomUser.objects.all().filter(teacher=True,standard=grd)
 	serializer = UserSerializer(tutorlist,many=True)
 	return Response(serializer.data)
 
@@ -917,4 +917,10 @@ def Compexkeys(request,xid):
 def Sattcompex(request,mid):
 	allattcompexanslist=Compexamresults.objects.all().filter(semail=mid)
 	serializer = CexamresultSerializer(allattcompexanslist,many=True)
+	return Response(serializer.data)
+
+@api_view(['GET'])
+def Fvideos(request,grd):
+	filtvideos=Videos.objects.all().filter(grade=grd)
+	serializer = VideoSerializer(filtvideos,many=True)
 	return Response(serializer.data)

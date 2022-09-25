@@ -115,5 +115,6 @@ path("tutors-list/<str:grd>",views.Tutorslist,name="tutorslist-api"),
 path("Atutors-list/",views.Atutorslist,name="alltutorsonsitelist-api"),
 path("Tallcompexam-list/",views.Tallcompexlist,name="allcompexamlistfortutors-api"),
 path("Compexans-list/<str:xid>",views.Compexkeys,name="allcompexamlistfortutors-api"),
-path("Sattcompexamlist/<str:mid>",views.Sattcompex,name="attendedcompexamlist-api")
+path("Sattcompexamlist/<str:mid>",views.Sattcompex,name="attendedcompexamlist-api"),
+path("Fvideoslist/<str:grd>/",views.Fvideos,name="filteredvideoslist-api")
 ]
